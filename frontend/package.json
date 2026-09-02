@@ -1,0 +1,48 @@
+{
+  "name": "frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run lint && vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint . --ext .ts,.vue",
+    "lint:fix": "eslint . --ext .ts,.vue --fix",
+    "codegen": "openapi-typescript ../api/openapi.json -o src/api/types.ts"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.18.0",
+    "@quasar/vite-plugin": "^1.11.0",
+    "chart.js": "^4.5.1",
+    "dompurify": "^3.4.5",
+    "marked": "^18.0.4",
+    "pinia": "^3.0.4",
+    "quasar": "^2.19.3",
+    "vis-data": "^8.0.4",
+    "vis-network": "^10.1.0",
+    "vue": "^3.5.34",
+    "vue-chartjs": "^5.3.3",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/dompurify": "^3.0.5",
+    "@types/node": "^24.12.3",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "@vue/test-utils": "^2.4.10",
+    "@vue/tsconfig": "^0.9.1",
+    "eslint": "^10.4.0",
+    "eslint-plugin-vue": "^10.9.1",
+    "globals": "^17.6.0",
+    "jsdom": "^29.1.1",
+    "sass-embedded": "^1.100.0",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.59.4",
+    "vite": "^8.0.12",
+    "vitest": "^4.1.7",
+    "vue-tsc": "^3.2.8"
+  }
+}

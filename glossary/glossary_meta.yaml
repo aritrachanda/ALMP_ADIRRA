@@ -1,0 +1,40 @@
+# Descriptions for glossary group headers (Domains and Categories).
+# Shown inline next to each group heading when browsing by Domain or Category.
+# Edit via the UI (✎ pencil) or directly here. Max 150 characters.
+
+domains:
+  Financial: >-
+    Terms relating to financial instruments, transactions, valuations,
+    and regulatory reporting obligations (BIRD, CRDM).
+  Operational: >-
+    Terms covering internal processes, governance, and organisational
+    concepts that support but are not part of the financial data model.
+
+categories:
+  Accounting: >-
+    How financial positions and events are recognised, measured, and
+    reported under IFRS 9, IAS 39, and prudential frameworks.
+  Banking: >-
+    Core banking product and lifecycle terms — instruments, facilities,
+    contracts, and the entities that originate or hold them.
+  Collateral: >-
+    Assets pledged or received to mitigate credit exposure, including
+    types, valuation bases, eligibility criteria, and haircuts.
+  Counterparty: >-
+    Legal entity identifiers and classification attributes — LEI, sector,
+    jurisdiction, and group hierarchy used in financial contracts.
+  General: >-
+    Cross-cutting terms referenced across multiple reporting frameworks
+    that do not fit a single subject domain.
+  Lending: >-
+    Loan and credit facility terms — drawdowns, repayments, forbearance,
+    arrears, and loan-level attributes required by AnaCredit/FINREP.
+  Risk: >-
+    Concepts for measuring and reporting credit, market, liquidity, and
+    operational risk exposures under CRR/CRD frameworks.
+  Securities: >-
+    Tradable instrument terms — equities, bonds, ABS, derivatives,
+    issuance attributes, pricing, and SFT concepts.
+  Securitisation: >-
+    Structuring and reporting concepts for securitisation transactions —
+    tranching, originator roles, and EU Securitisation Regulation (SECR).

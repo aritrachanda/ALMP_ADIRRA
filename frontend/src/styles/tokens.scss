@@ -1,0 +1,101 @@
+:root {
+  --adirra-paper: #f6f3ec;
+  --adirra-paper-2: #efeae0;
+  --adirra-card: #fffdf8;
+  --adirra-ink: #1c1b18;
+  --adirra-ink-2: #4a473f;
+  --adirra-ink-3: #86827a;
+  --adirra-line: #ddd6c8;
+  --adirra-accent: #0d5c54;
+  --adirra-accent-soft: #0d5c5418;
+  --adirra-draft: #a9651b;
+  --adirra-draft-soft: #a9651b18;
+  --adirra-reviewed: #2f5d8a;
+  --adirra-reviewed-soft: #2f5d8a18;
+  --adirra-released: #2f6b3a;
+  --adirra-released-soft: #2f6b3a18;
+  --adirra-danger: #9e3326;
+  --adirra-danger-soft: #9e332615;
+  --adirra-shadow: 0 1px 2px #1c1b1808, 0 8px 24px -12px #1c1b1822;
+
+  /* DQ component palette — single source of truth for the three Data
+     Quality component identity colours. The donut segments, legend dots, and
+     the three component-tab accents all read these tokens; a future colour
+     picker re-colours everything by rewriting only these three values.
+     Identity colours (not health colours) — kept identical in dark mode. */
+  --dq-profile: #2bc4bc;       /* turquoise · data */
+  --dq-interpretation: #96613d; /* brown · governance (was --dq-definition) */
+  --dq-refdata: #147a82;       /* teal · governance */
+
+  /* ── Visualisation colour systems ───────────────────────────────────────
+     One colour system per MEANING — never reuse a governance colour for a
+     semantic type. Promoted here from AssetWorkspace's scoped block so the
+     dataset/source chart cards and the Dashboard all read one source.
+
+     Governance = a SEQUENTIAL journey ramp (progression, not categories):
+     inert grey -> amber -> blue -> green, with bounced as the off-ramp. */
+  --gov-empty: #c0bbb2;
+  --gov-draft: #a9651b;
+  --gov-in-review: #2f5d8a;
+  --gov-approved: #2f6b3a;
+  --gov-bounced: #9e3326;
+
+  /* Chart-surface variants — same hues, higher saturation. Used only on
+     chart fills so the visualisations read vibrant without repainting every
+     badge/pill/rail chip in the app. */
+  --gov-empty-vivid: #cdc7bd;
+  --gov-draft-vivid: #d4820f;
+  --gov-in-review-vivid: #2b6cb0;
+  --gov-approved-vivid: #2f9e44;
+  --gov-bounced-vivid: #c53f32;
+
+  /* DQ grades = a DIVERGING ramp, red -> amber -> green. */
+  --dq-excellent: #1a7f37;
+  --dq-good: #4c9a2a;
+  --dq-adequate: #b8860b;
+  --dq-weak: #d9702e;
+  --dq-critical: #c62828;
+}
+
+body.dark {
+  --adirra-paper: #141412;
+  --adirra-paper-2: #1c1b18;
+  --adirra-card: #1f1e1a;
+  --adirra-ink: #f0ece2;
+  --adirra-ink-2: #a8a49a;
+  --adirra-ink-3: #5e5a52;
+  --adirra-line: #2e2c27;
+  --adirra-accent: #2db8a4;
+  --adirra-accent-soft: #2db8a418;
+  --adirra-draft: #d4843a;
+  --adirra-draft-soft: #d4843a1a;
+  --adirra-reviewed: #5b9bd5;
+  --adirra-reviewed-soft: #5b9bd51a;
+  --adirra-released: #4a9e5c;
+  --adirra-released-soft: #4a9e5c1a;
+  --adirra-danger: #d45a4a;
+  --adirra-danger-soft: #d45a4a18;
+  --adirra-shadow: 0 1px 2px #00000030, 0 8px 24px -12px #00000060;
+
+  /* Governance ramp — lifted for contrast against the dark paper. */
+  --gov-empty: #55524c;
+  --gov-draft: #d4843a;
+  --gov-in-review: #5b9bd5;
+  --gov-approved: #4a9e5c;
+  --gov-bounced: #d45a4a;
+  --gov-empty-vivid: #6b675f;
+  --gov-draft-vivid: #e5934a;
+  --gov-in-review-vivid: #6cabe3;
+  --gov-approved-vivid: #57b56b;
+  --gov-bounced-vivid: #e06a58;
+}
+
+*,
+*::before,
+*::after {
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    color 0.15s,
+    box-shadow 0.2s;
+}

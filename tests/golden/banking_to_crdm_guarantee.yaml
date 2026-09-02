@@ -1,0 +1,233 @@
+version: 2
+source: banking
+target: crdm
+provider: azure
+model: gpt-5.4-mini
+generated_at: '2026-05-21T16:50:25'
+status: draft
+tables:
+- target_schema: CRDM.input
+  target_table: Guarantee
+  table_confidence: 0.91
+  table_rationale: The target table is clearly about guarantees and the source dataset
+    contains a dedicated guarantees table plus related collateral and counterparty
+    attributes needed to populate most fields.
+  sql_query: "SELECT\n  NULL AS bank_business_id,\n  CASE WHEN g.guarantee_type IN\
+    \ ('PersonalGuarantee','CorporateGuarantee','BankGuarantee','GovernmentGuarantee')\
+    \ THEN CASE WHEN g.guarantee_type IN ('CorporateGuarantee','BankGuarantee','GovernmentGuarantee')\
+    \ THEN 1 ELSE 0 END ELSE NULL END AS capped_guarantee,\n  NULL AS collateral_amount_cap,\n\
+    \  c.country AS country_code_iso,\n  g.guarantee_id AS crm_number,\n  g.guarantee_type\
+    \ AS crm_type,\n  g.currency AS currency_code_iso,\n  CONVERT(varchar(8), GETDATE(),\
+    \ 112) AS datadate,\n  CASE WHEN g.is_financial_collateral = 1 THEN 0 ELSE NULL\
+    \ END AS deficiency_guarantee,\n  c.collateral_type AS ext_collateral_type,\n\
+    \  g.guarantee_id AS ext_crm_id,\n  CASE WHEN g.guarantee_type IN ('PersonalGuarantee','CorporateGuarantee','BankGuarantee','GovernmentGuarantee')\
+    \ THEN CASE WHEN g.guarantee_type IN ('PersonalGuarantee','CorporateGuarantee')\
+    \ THEN 0 ELSE 1 END ELSE NULL END AS general_guarantee,\n  g.amount AS guarantee_percent,\n\
+    \  ROW_NUMBER() OVER (ORDER BY g.guarantee_id) AS id,\n  g.start_date AS inception_date,\n\
+    \  g.expiry_date AS maturity_date,\n  g.expiry_date AS maturity_date_original,\n\
+    \  g.is_financial_collateral AS sa_included,\n  NULL AS sa_rw,\n  'banking' AS\
+    \ source_system,\n  c.valuation_date AS valuation_date\nFROM src.guarantees g\n\
+    LEFT JOIN src.loan_collateral_map lcm ON lcm.loan_id = g.loan_id\nLEFT JOIN src.collateral\
+    \ c ON c.collateral_id = lcm.collateral_id;"
+  columns:
+  - target_column: bank_business_id
+    source_schema: null
+    source_table: null
+    source_column: null
+    confidence: 0.0
+    rationale: No provided source column contains the bank's business id in YTJ format.
+    transformation_type: unmapped
+    notes: null
+    status: pending
+  - target_column: capped_guarantee
+    source_schema: src
+    source_table: guarantees
+    source_column: guarantee_type
+    confidence: 0.42
+    rationale: Guarantee type can be used to infer whether the guarantee is general
+      or special, though the source does not explicitly store this flag.
+    transformation_type: derived
+    notes: Derive a boolean from guarantee_type using a business rule; exact classification
+      may require domain mapping.
+    status: pending
+  - target_column: collateral_amount_cap
+    source_schema: null
+    source_table: null
+    source_column: null
+    confidence: 0.0
+    rationale: No source field provides a collateral cap amount for multi-guarantor
+      guarantees.
+    transformation_type: unmapped
+    notes: null
+    status: pending
+  - target_column: country_code_iso
+    source_schema: src
+    source_table: collateral
+    source_column: country
+    confidence: 0.88
+    rationale: Collateral country is the closest available ISO country code for the
+      guarantee.
+    transformation_type: direct
+    notes: null
+    status: pending
+  - target_column: crm_number
+    source_schema: src
+    source_table: guarantees
+    source_column: guarantee_id
+    confidence: 0.97
+    rationale: Guarantee ID is the best match for the collateral number identifier.
+    transformation_type: direct
+    notes: null
+    status: pending
+  - target_column: crm_type
+    source_schema: src
+    source_table: guarantees
+    source_column: guarantee_type
+    confidence: 0.95
+    rationale: Guarantee type directly matches the target CRM type concept.
+    transformation_type: direct
+    notes: null
+    status: pending
+  - target_column: currency_code_iso
+    source_schema: src
+    source_table: guarantees
+    source_column: currency
+    confidence: 0.99
+    rationale: Guarantee currency is a direct ISO currency code match.
+    transformation_type: direct
+    notes: null
+    status: pending
+  - target_column: datadate
+    source_schema: null
+    source_table: null
+    source_column: null
+    confidence: 1.0
+    rationale: The target explicitly requires GETDATE() formatted as YYYYMMDD.
+    transformation_type: derived
+    notes: Use GETDATE() and convert to YYYYMMDD format.
+    status: pending
+  - target_column: deficiency_guarantee
+    source_schema: src
+    source_table: guarantees
+    source_column: is_financial_collateral
+    confidence: 0.31
+    rationale: Financial collateral is the only available boolean related to guarantee
+      backing, but it is not an exact deficiency indicator.
+    transformation_type: derived
+    notes: Requires business-rule translation; no exact deficiency flag exists.
+    status: pending
+  - target_column: ext_collateral_type
+    source_schema: src
+    source_table: collateral
+    source_column: collateral_type
+    confidence: 0.93
+    rationale: Collateral type directly represents the external collateral type.
+    transformation_type: direct
+    notes: null
+    status: pending
+  - target_column: ext_crm_id
+    source_schema: src
+    source_table: guarantees
+    source_column: guarantee_id
+    confidence: 0.9
+    rationale: Guarantee ID is the best available source system surrogate identifier.
+    transformation_type: direct
+    notes: null
+    status: pending
+  - target_column: general_guarantee
+    source_schema: src
+    source_table: guarantees
+    source_column: guarantee_type
+    confidence: 0.42
+    rationale: Guarantee type can be used to infer whether the guarantee is general
+      or special.
+    transformation_type: derived
+    notes: Derive a boolean from guarantee_type using a business rule; exact classification
+      may require domain mapping.
+    status: pending
+  - target_column: guarantee_percent
+    source_schema: src
+    source_table: guarantees
+    source_column: amount
+    confidence: 0.2
+    rationale: The source has guarantee amount but not an explicit guarantee percentage.
+    transformation_type: derived
+    notes: No true percentage source exists; this is only a weak proxy and may need
+      null or a calculated ratio if business logic is available.
+    status: pending
+  - target_column: id
+    source_schema: null
+    source_table: null
+    source_column: null
+    confidence: 0.0
+    rationale: No source provides the required rolling debug identifier.
+    transformation_type: unmapped
+    notes: null
+    status: pending
+  - target_column: inception_date
+    source_schema: src
+    source_table: guarantees
+    source_column: start_date
+    confidence: 0.98
+    rationale: Guarantee start date directly matches inception date.
+    transformation_type: direct
+    notes: null
+    status: pending
+  - target_column: maturity_date
+    source_schema: src
+    source_table: guarantees
+    source_column: expiry_date
+    confidence: 0.98
+    rationale: Guarantee expiry date directly matches maturity date.
+    transformation_type: direct
+    notes: null
+    status: pending
+  - target_column: maturity_date_original
+    source_schema: src
+    source_table: guarantees
+    source_column: expiry_date
+    confidence: 0.92
+    rationale: The original maturity date is best represented by the guarantee expiry
+      date.
+    transformation_type: direct
+    notes: null
+    status: pending
+  - target_column: sa_included
+    source_schema: src
+    source_table: guarantees
+    source_column: is_financial_collateral
+    confidence: 0.55
+    rationale: Financial collateral status is the closest available boolean related
+      to SA inclusion.
+    transformation_type: direct
+    notes: This is a proxy only; confirm with business rules whether financial collateral
+      implies SA inclusion.
+    status: pending
+  - target_column: sa_rw
+    source_schema: null
+    source_table: null
+    source_column: null
+    confidence: 0.0
+    rationale: No source column provides a collateral risk weight.
+    transformation_type: unmapped
+    notes: null
+    status: pending
+  - target_column: source_system
+    source_schema: null
+    source_table: null
+    source_column: null
+    confidence: 1.0
+    rationale: The source system name is the dataset name banking.
+    transformation_type: derived
+    notes: Populate with the constant value 'banking'.
+    status: pending
+  - target_column: valuation_date
+    source_schema: src
+    source_table: collateral
+    source_column: valuation_date
+    confidence: 0.96
+    rationale: Collateral valuation date directly matches the target valuation date.
+    transformation_type: direct
+    notes: null
+    status: pending
+  status: pending

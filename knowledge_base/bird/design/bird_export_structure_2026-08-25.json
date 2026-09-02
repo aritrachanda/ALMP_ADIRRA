@@ -1,0 +1,1198 @@
+{
+ "MAINTENANCE_AGENCY": {
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "CODE",
+   "NAME",
+   "DESCRIPTION",
+   "DELETED"
+  ],
+  "types": {
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "CODE": "TEXT",
+   "NAME": "TEXT",
+   "DESCRIPTION": "TEXT",
+   "DELETED": "BOOLEAN"
+  },
+  "rows": 5
+ },
+ "FRAMEWORK": {
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "FRAMEWORK_ID",
+   "NAME",
+   "CODE",
+   "DESCRIPTION",
+   "FRAMEWORK_TYPE",
+   "REPORTING_POPULATION",
+   "OTHER_LINKS",
+   "ORDER",
+   "FRAMEWORK_STATUS"
+  ],
+  "types": {
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "FRAMEWORK_ID": "TEXT",
+   "NAME": "TEXT",
+   "CODE": "TEXT",
+   "DESCRIPTION": "TEXT",
+   "FRAMEWORK_TYPE": "TEXT",
+   "REPORTING_POPULATION": "empty",
+   "OTHER_LINKS": "empty",
+   "ORDER": "NUMERIC",
+   "FRAMEWORK_STATUS": "TEXT"
+  },
+  "rows": 9
+ },
+ "DOMAIN": {
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "DOMAIN_ID",
+   "NAME",
+   "IS_ENUMERATED",
+   "DESCRIPTION",
+   "DATA_TYPE",
+   "CODE",
+   "FACET_ID",
+   "IS_REFERENCE"
+  ],
+  "types": {
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "DOMAIN_ID": "TEXT",
+   "NAME": "TEXT",
+   "IS_ENUMERATED": "BOOLEAN",
+   "DESCRIPTION": "TEXT",
+   "DATA_TYPE": "TEXT",
+   "CODE": "TEXT",
+   "FACET_ID": "TEXT",
+   "IS_REFERENCE": "BOOLEAN"
+  },
+  "rows": 307
+ },
+ "FACET_COLLECTION": {
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "FACET_ID",
+   "CODE",
+   "NAME",
+   "FACET_VALUE_TYPE"
+  ],
+  "types": {
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "FACET_ID": "TEXT",
+   "CODE": "TEXT",
+   "NAME": "TEXT",
+   "FACET_VALUE_TYPE": "TEXT"
+  },
+  "rows": 117
+ },
+ "FACET_ENUMERATION": {
+  "columns": [
+   "FACET_ID",
+   "FACET_TYPE",
+   "OBSERVATION_VALUE"
+  ],
+  "types": {
+   "FACET_ID": "TEXT",
+   "FACET_TYPE": "TEXT",
+   "OBSERVATION_VALUE": "TEXT"
+  },
+  "rows": 131
+ },
+ "MEMBER": {
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "MEMBER_ID",
+   "CODE",
+   "NAME",
+   "DOMAIN_ID",
+   "DESCRIPTION"
+  ],
+  "types": {
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "MEMBER_ID": "TEXT",
+   "CODE": "TEXT",
+   "NAME": "TEXT",
+   "DOMAIN_ID": "TEXT",
+   "DESCRIPTION": "TEXT"
+  },
+  "rows": 22137
+ },
+ "MEMBER_HIERARCHY": {
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "MEMBER_HIERARCHY_ID",
+   "CODE",
+   "DOMAIN_ID",
+   "NAME",
+   "DESCRIPTION",
+   "IS_MAIN_HIERARCHY"
+  ],
+  "types": {
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "MEMBER_HIERARCHY_ID": "TEXT",
+   "CODE": "TEXT",
+   "DOMAIN_ID": "TEXT",
+   "NAME": "TEXT",
+   "DESCRIPTION": "TEXT",
+   "IS_MAIN_HIERARCHY": "BOOLEAN"
+  },
+  "rows": 1481
+ },
+ "MEMBER_HIERARCHY_NODE": {
+  "columns": [
+   "MEMBER_HIERARCHY_ID",
+   "MEMBER_ID",
+   "LEVEL",
+   "PARENT_MEMBER_ID",
+   "COMPARATOR",
+   "OPERATOR",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "types": {
+   "MEMBER_HIERARCHY_ID": "TEXT",
+   "MEMBER_ID": "TEXT",
+   "LEVEL": "NUMERIC",
+   "PARENT_MEMBER_ID": "TEXT",
+   "COMPARATOR": "TEXT",
+   "OPERATOR": "TEXT",
+   "VALID_FROM": "DATE",
+   "VALID_TO": "DATE"
+  },
+  "rows": 44773
+ },
+ "SUBDOMAIN": {
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "SUBDOMAIN_ID",
+   "NAME",
+   "DOMAIN_ID",
+   "IS_LISTED",
+   "CODE",
+   "FACET_ID",
+   "DESCRIPTION",
+   "IS_NATURAL"
+  ],
+  "types": {
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "SUBDOMAIN_ID": "TEXT",
+   "NAME": "TEXT",
+   "DOMAIN_ID": "TEXT",
+   "IS_LISTED": "BOOLEAN",
+   "CODE": "TEXT",
+   "FACET_ID": "empty",
+   "DESCRIPTION": "TEXT",
+   "IS_NATURAL": "BOOLEAN"
+  },
+  "rows": 2522
+ },
+ "SUBDOMAIN_ENUMERATION": {
+  "columns": [
+   "MEMBER_ID",
+   "SUBDOMAIN_ID",
+   "VALID_FROM",
+   "VALID_TO",
+   "ORDER"
+  ],
+  "types": {
+   "MEMBER_ID": "TEXT",
+   "SUBDOMAIN_ID": "TEXT",
+   "VALID_FROM": "DATE",
+   "VALID_TO": "DATE",
+   "ORDER": "NUMERIC"
+  },
+  "rows": 43501
+ },
+ "VARIABLE": {
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "VARIABLE_ID",
+   "CODE",
+   "NAME",
+   "DOMAIN_ID",
+   "DESCRIPTION",
+   "PRIMARY_CONCEPT",
+   "IS_DECOMPOSED"
+  ],
+  "types": {
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "VARIABLE_ID": "TEXT",
+   "CODE": "TEXT",
+   "NAME": "TEXT",
+   "DOMAIN_ID": "TEXT",
+   "DESCRIPTION": "TEXT",
+   "PRIMARY_CONCEPT": "TEXT",
+   "IS_DECOMPOSED": "BOOLEAN"
+  },
+  "rows": 2144
+ },
+ "VARIABLE_SET": {
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "VARIABLE_SET_ID",
+   "NAME",
+   "CODE",
+   "DESCRIPTION"
+  ],
+  "types": {
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "VARIABLE_SET_ID": "TEXT",
+   "NAME": "TEXT",
+   "CODE": "TEXT",
+   "DESCRIPTION": "TEXT"
+  },
+  "rows": 2557
+ },
+ "VARIABLE_SET_ENUMERATION": {
+  "columns": [
+   "VARIABLE_SET_ID",
+   "VARIABLE_ID",
+   "VALID_FROM",
+   "VALID_TO",
+   "SUBDOMAIN_ID",
+   "IS_FLOW",
+   "ORDER"
+  ],
+  "types": {
+   "VARIABLE_SET_ID": "TEXT",
+   "VARIABLE_ID": "TEXT",
+   "VALID_FROM": "DATE",
+   "VALID_TO": "DATE",
+   "SUBDOMAIN_ID": "TEXT",
+   "IS_FLOW": "BOOLEAN",
+   "ORDER": "NUMERIC"
+  },
+  "rows": 3616
+ },
+ "COMBINATION": {
+  "columns": [
+   "COMBINATION_ID",
+   "CODE",
+   "NAME",
+   "MAINTENANCE_AGENCY_ID",
+   "VERSION",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "types": {
+   "COMBINATION_ID": "TEXT",
+   "CODE": "TEXT",
+   "NAME": "TEXT",
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "VERSION": "TEXT",
+   "VALID_FROM": "DATE",
+   "VALID_TO": "DATE"
+  },
+  "rows": 34709
+ },
+ "COMBINATION_ITEM": {
+  "columns": [
+   "COMBINATION_ID",
+   "VARIABLE_ID",
+   "SUBDOMAIN_ID",
+   "VARIABLE_SET_ID",
+   "MEMBER_ID"
+  ],
+  "types": {
+   "COMBINATION_ID": "TEXT",
+   "VARIABLE_ID": "TEXT",
+   "SUBDOMAIN_ID": "TEXT",
+   "VARIABLE_SET_ID": "TEXT",
+   "MEMBER_ID": "TEXT"
+  },
+  "rows": 641198
+ },
+ "CUBE": {
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "CUBE_ID",
+   "NAME",
+   "CODE",
+   "FRAMEWORK_ID",
+   "CUBE_STRUCTURE_ID",
+   "CUBE_TYPE",
+   "IS_ALLOWED",
+   "VALID_FROM",
+   "VALID_TO",
+   "VERSION",
+   "DESCRIPTION",
+   "PUBLISHED",
+   "DATASET_URL",
+   "FILTERS",
+   "DI_EXPORT"
+  ],
+  "types": {
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "CUBE_ID": "TEXT",
+   "NAME": "TEXT",
+   "CODE": "TEXT",
+   "FRAMEWORK_ID": "TEXT",
+   "CUBE_STRUCTURE_ID": "TEXT",
+   "CUBE_TYPE": "TEXT",
+   "IS_ALLOWED": "empty",
+   "VALID_FROM": "DATE",
+   "VALID_TO": "DATE",
+   "VERSION": "TEXT",
+   "DESCRIPTION": "TEXT",
+   "PUBLISHED": "BOOLEAN",
+   "DATASET_URL": "empty",
+   "FILTERS": "empty",
+   "DI_EXPORT": "empty"
+  },
+  "rows": 2146
+ },
+ "CUBE_GROUP": {
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "CUBE_GROUP_ID",
+   "NAME",
+   "CODE",
+   "DESCRIPTION"
+  ],
+  "types": {
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "CUBE_GROUP_ID": "TEXT",
+   "NAME": "TEXT",
+   "CODE": "TEXT",
+   "DESCRIPTION": "TEXT"
+  },
+  "rows": 81
+ },
+ "CUBE_GROUP_ENUMERATION": {
+  "columns": [
+   "ORDER",
+   "CUBE_GROUP_ID",
+   "CUBE_ID",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "types": {
+   "ORDER": "NUMERIC",
+   "CUBE_GROUP_ID": "TEXT",
+   "CUBE_ID": "TEXT",
+   "VALID_FROM": "DATE",
+   "VALID_TO": "DATE"
+  },
+  "rows": 1454
+ },
+ "CUBE_HIERARCHY": {
+  "columns": [
+   "CUBE_HIERARCHY_ID",
+   "MAINTENANCE_AGENCY_ID",
+   "NAME",
+   "CODE",
+   "DESCRIPTION",
+   "CUBE_HIERARCHY_TYPE",
+   "FRAMEWORK_ID"
+  ],
+  "types": {
+   "CUBE_HIERARCHY_ID": "TEXT",
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "NAME": "TEXT",
+   "CODE": "TEXT",
+   "DESCRIPTION": "empty",
+   "CUBE_HIERARCHY_TYPE": "TEXT",
+   "FRAMEWORK_ID": "TEXT"
+  },
+  "rows": 6
+ },
+ "CUBE_HIERARCHY_NODE": {
+  "columns": [
+   "CUBE_HIERARCHY_ID",
+   "NODE_CODE",
+   "NODE_NAME",
+   "LEVEL",
+   "PARENT_NODE_CODE",
+   "CUBE_GROUP_ID",
+   "VALID_FROM",
+   "VALID_TO",
+   "ORDER",
+   "COLOUR"
+  ],
+  "types": {
+   "CUBE_HIERARCHY_ID": "TEXT",
+   "NODE_CODE": "TEXT",
+   "NODE_NAME": "TEXT",
+   "LEVEL": "NUMERIC",
+   "PARENT_NODE_CODE": "empty",
+   "CUBE_GROUP_ID": "TEXT",
+   "VALID_FROM": "DATE",
+   "VALID_TO": "DATE",
+   "ORDER": "NUMERIC",
+   "COLOUR": "TEXT"
+  },
+  "rows": 81
+ },
+ "CUBE_RELATIONSHIP": {
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "CUBE_RELATIONSHIP_ID",
+   "CODE",
+   "NAME",
+   "DESCRIPTION",
+   "TYPE_OF_RELATIONSHIP",
+   "VALID_FROM",
+   "VALID_TO",
+   "VERSION",
+   "PRIMARY_CUBE_ID",
+   "PRIMARY_CUBE_VARIABLE_CODE",
+   "FOREIGN_CUBE_ID",
+   "FOREIGN_CUBE_VARIABLE_CODE",
+   "PRIMARY_CUBE_CARDINALITY",
+   "FOREIGN_CUBE_CARDINALITY",
+   "PRIMARY_CUBE_MANDATORINESS",
+   "FOREIGN_CUBE_MANDATORINESS"
+  ],
+  "types": {
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "CUBE_RELATIONSHIP_ID": "TEXT",
+   "CODE": "TEXT",
+   "NAME": "TEXT",
+   "DESCRIPTION": "TEXT",
+   "TYPE_OF_RELATIONSHIP": "TEXT",
+   "VALID_FROM": "DATE",
+   "VALID_TO": "DATE",
+   "VERSION": "TEXT",
+   "PRIMARY_CUBE_ID": "TEXT",
+   "PRIMARY_CUBE_VARIABLE_CODE": "TEXT",
+   "FOREIGN_CUBE_ID": "TEXT",
+   "FOREIGN_CUBE_VARIABLE_CODE": "TEXT",
+   "PRIMARY_CUBE_CARDINALITY": "TEXT",
+   "FOREIGN_CUBE_CARDINALITY": "TEXT",
+   "PRIMARY_CUBE_MANDATORINESS": "BOOLEAN",
+   "FOREIGN_CUBE_MANDATORINESS": "BOOLEAN"
+  },
+  "rows": 6592
+ },
+ "CUBE_LINK": {
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "CUBE_LINK_ID",
+   "CODE",
+   "NAME",
+   "DESCRIPTION",
+   "VALID_FROM",
+   "VALID_TO",
+   "VERSION",
+   "ORDER_RELEVANCE",
+   "PRIMARY_CUBE_ID",
+   "FOREIGN_CUBE_ID",
+   "CUBE_LINK_TYPE",
+   "LOGICAL_TRANSFORMATION_RULE_ID"
+  ],
+  "types": {
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "CUBE_LINK_ID": "TEXT",
+   "CODE": "TEXT",
+   "NAME": "TEXT",
+   "DESCRIPTION": "empty",
+   "VALID_FROM": "DATE",
+   "VALID_TO": "DATE",
+   "VERSION": "TEXT",
+   "ORDER_RELEVANCE": "NUMERIC",
+   "PRIMARY_CUBE_ID": "TEXT",
+   "FOREIGN_CUBE_ID": "TEXT",
+   "CUBE_LINK_TYPE": "TEXT",
+   "LOGICAL_TRANSFORMATION_RULE_ID": "TEXT"
+  },
+  "rows": 2202
+ },
+ "CUBE_STRUCTURE_ITEM_LINK": {
+  "columns": [
+   "CUBE_STRUCTURE_ITEM_LINK_ID",
+   "CUBE_LINK_ID",
+   "FOREIGN_CUBE_VARIABLE_CODE",
+   "PRIMARY_CUBE_VARIABLE_CODE",
+   "COMPARATOR",
+   "AGGREGATION_FUNCTION"
+  ],
+  "types": {
+   "CUBE_STRUCTURE_ITEM_LINK_ID": "TEXT",
+   "CUBE_LINK_ID": "TEXT",
+   "FOREIGN_CUBE_VARIABLE_CODE": "TEXT",
+   "PRIMARY_CUBE_VARIABLE_CODE": "TEXT",
+   "COMPARATOR": "TEXT",
+   "AGGREGATION_FUNCTION": "TEXT"
+  },
+  "rows": 11851
+ },
+ "MEMBER_LINK": {
+  "columns": [
+   "CUBE_STRUCTURE_ITEM_LINK_ID",
+   "FOREIGN_MEMBER_ID",
+   "PRIMARY_MEMBER_ID",
+   "VALID_FROM",
+   "VALID_TO",
+   "IS_LINKED"
+  ],
+  "types": {
+   "CUBE_STRUCTURE_ITEM_LINK_ID": "TEXT",
+   "FOREIGN_MEMBER_ID": "TEXT",
+   "PRIMARY_MEMBER_ID": "TEXT",
+   "VALID_FROM": "DATE",
+   "VALID_TO": "DATE",
+   "IS_LINKED": "BOOLEAN"
+  },
+  "rows": 1000000
+ },
+ "MEMBER_LINK_(2)": {
+  "columns": [
+   "CUBE_STRUCTURE_ITEM_LINK_ID",
+   "FOREIGN_MEMBER_ID",
+   "PRIMARY_MEMBER_ID",
+   "VALID_FROM",
+   "VALID_TO",
+   "IS_LINKED"
+  ],
+  "types": {
+   "CUBE_STRUCTURE_ITEM_LINK_ID": "TEXT",
+   "FOREIGN_MEMBER_ID": "TEXT",
+   "PRIMARY_MEMBER_ID": "TEXT",
+   "VALID_FROM": "DATE",
+   "VALID_TO": "DATE",
+   "IS_LINKED": "BOOLEAN"
+  },
+  "rows": 81317
+ },
+ "CUBE_STRUCTURE": {
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "CUBE_STRUCTURE_ID",
+   "NAME",
+   "CODE",
+   "DESCRIPTION",
+   "VALID_FROM",
+   "VALID_TO",
+   "VERSION"
+  ],
+  "types": {
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "CUBE_STRUCTURE_ID": "TEXT",
+   "NAME": "TEXT",
+   "CODE": "TEXT",
+   "DESCRIPTION": "TEXT",
+   "VALID_FROM": "DATE",
+   "VALID_TO": "DATE",
+   "VERSION": "TEXT"
+  },
+  "rows": 2146
+ },
+ "CUBE_STRUCTURE_ITEM": {
+  "columns": [
+   "CUBE_STRUCTURE_ITEM_ID",
+   "CUBE_STRUCTURE_ID",
+   "CUBE_VARIABLE_CODE",
+   "VARIABLE_ID",
+   "ROLE",
+   "ORDER",
+   "SUBDOMAIN_ID",
+   "VARIABLE_SET_ID",
+   "MEMBER_ID",
+   "DIMENSION_TYPE",
+   "ATTRIBUTE_ASSOCIATED_VARIABLE",
+   "IS_FLOW",
+   "IS_MANDATORY",
+   "DESCRIPTION",
+   "IS_IMPLEMENTED"
+  ],
+  "types": {
+   "CUBE_STRUCTURE_ITEM_ID": "TEXT",
+   "CUBE_STRUCTURE_ID": "TEXT",
+   "CUBE_VARIABLE_CODE": "TEXT",
+   "VARIABLE_ID": "TEXT",
+   "ROLE": "TEXT",
+   "ORDER": "NUMERIC",
+   "SUBDOMAIN_ID": "TEXT",
+   "VARIABLE_SET_ID": "TEXT",
+   "MEMBER_ID": "TEXT",
+   "DIMENSION_TYPE": "TEXT",
+   "ATTRIBUTE_ASSOCIATED_VARIABLE": "TEXT",
+   "IS_FLOW": "BOOLEAN",
+   "IS_MANDATORY": "BOOLEAN",
+   "DESCRIPTION": "TEXT",
+   "IS_IMPLEMENTED": "BOOLEAN"
+  },
+  "rows": 23355
+ },
+ "CUBE_TO_COMBINATION": {
+  "columns": [
+   "CUBE_ID",
+   "COMBINATION_ID"
+  ],
+  "types": {
+   "CUBE_ID": "TEXT",
+   "COMBINATION_ID": "TEXT"
+  },
+  "rows": 68884
+ },
+ "FRAMEWORK_HIERARCHY": {
+  "columns": [
+   "FRAMEWORK_ID",
+   "MEMBER_HIERARCHY_ID"
+  ],
+  "types": {
+   "FRAMEWORK_ID": "empty",
+   "MEMBER_HIERARCHY_ID": "empty"
+  },
+  "rows": 0
+ },
+ "FRAMEWORK_SUBDOMAIN": {
+  "columns": [
+   "FRAMEWORK_ID",
+   "SUBDOMAIN_ID"
+  ],
+  "types": {
+   "FRAMEWORK_ID": "empty",
+   "SUBDOMAIN_ID": "empty"
+  },
+  "rows": 0
+ },
+ "FRAMEWORK_VARIABLE_SET": {
+  "columns": [
+   "FRAMEWORK_ID",
+   "VARIABLE_SET_ID"
+  ],
+  "types": {
+   "FRAMEWORK_ID": "TEXT",
+   "VARIABLE_SET_ID": "TEXT"
+  },
+  "rows": 1
+ },
+ "CUBE_MAPPING": {
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "CUBE_MAPPING_ID",
+   "NAME",
+   "CODE",
+   "SOURCE_CUBE_ID",
+   "DESTINATION_CUBE_ID",
+   "DESCRIPTION"
+  ],
+  "types": {
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "CUBE_MAPPING_ID": "TEXT",
+   "NAME": "TEXT",
+   "CODE": "TEXT",
+   "SOURCE_CUBE_ID": "TEXT",
+   "DESTINATION_CUBE_ID": "TEXT",
+   "DESCRIPTION": "TEXT"
+  },
+  "rows": 175
+ },
+ "COMBINATION_MAPPING": {
+  "columns": [
+   "SOURCE_COMBINATION_ID",
+   "DESTINATION_COMBINATION_ID"
+  ],
+  "types": {
+   "SOURCE_COMBINATION_ID": "empty",
+   "DESTINATION_COMBINATION_ID": "empty"
+  },
+  "rows": 0
+ },
+ "MAPPING_DEFINITION": {
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "MAPPING_ID",
+   "NAME",
+   "MAPPING_TYPE",
+   "CODE",
+   "ALGORITHM",
+   "MEMBER_MAPPING_ID",
+   "VARIABLE_MAPPING_ID"
+  ],
+  "types": {
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "MAPPING_ID": "TEXT",
+   "NAME": "TEXT",
+   "MAPPING_TYPE": "TEXT",
+   "CODE": "TEXT",
+   "ALGORITHM": "empty",
+   "MEMBER_MAPPING_ID": "TEXT",
+   "VARIABLE_MAPPING_ID": "TEXT"
+  },
+  "rows": 438
+ },
+ "MAPPING_TO_CUBE": {
+  "columns": [
+   "CUBE_MAPPING_ID",
+   "MAPPING_ID",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "types": {
+   "CUBE_MAPPING_ID": "TEXT",
+   "MAPPING_ID": "TEXT",
+   "VALID_FROM": "DATE",
+   "VALID_TO": "DATE"
+  },
+  "rows": 1582
+ },
+ "MEMBER_MAPPING": {
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "MEMBER_MAPPING_ID",
+   "NAME",
+   "CODE"
+  ],
+  "types": {
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "MEMBER_MAPPING_ID": "TEXT",
+   "NAME": "TEXT",
+   "CODE": "TEXT"
+  },
+  "rows": 220
+ },
+ "MEMBER_MAPPING_ITEM": {
+  "columns": [
+   "MEMBER_MAPPING_ID",
+   "MEMBER_MAPPING_ROW",
+   "VARIABLE_ID",
+   "IS_SOURCE",
+   "MEMBER_ID",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "types": {
+   "MEMBER_MAPPING_ID": "TEXT",
+   "MEMBER_MAPPING_ROW": "NUMERIC",
+   "VARIABLE_ID": "TEXT",
+   "IS_SOURCE": "BOOLEAN",
+   "MEMBER_ID": "TEXT",
+   "VALID_FROM": "DATE",
+   "VALID_TO": "DATE"
+  },
+  "rows": 39190
+ },
+ "VARIABLE_MAPPING": {
+  "columns": [
+   "VARIABLE_MAPPING_ID",
+   "MAINTENANCE_AGENCY_ID",
+   "CODE",
+   "NAME"
+  ],
+  "types": {
+   "VARIABLE_MAPPING_ID": "TEXT",
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "CODE": "TEXT",
+   "NAME": "TEXT"
+  },
+  "rows": 438
+ },
+ "VARIABLE_MAPPING_ITEM": {
+  "columns": [
+   "VARIABLE_MAPPING_ID",
+   "VARIABLE_ID",
+   "IS_SOURCE",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "types": {
+   "VARIABLE_MAPPING_ID": "TEXT",
+   "VARIABLE_ID": "TEXT",
+   "IS_SOURCE": "BOOLEAN",
+   "VALID_FROM": "DATE",
+   "VALID_TO": "DATE"
+  },
+  "rows": 1509
+ },
+ "VARIABLE_SET_MAPPING": {
+  "columns": [
+   "SOURCE_MAPPING_ID",
+   "TARGET_MAPPING_ID"
+  ],
+  "types": {
+   "SOURCE_MAPPING_ID": "TEXT",
+   "TARGET_MAPPING_ID": "TEXT"
+  },
+  "rows": 151
+ },
+ "CUBE_STRUCTURE_MAPPING": {
+  "columns": [
+   "MAPPING_ID",
+   "CUBE_MAPPING_ID",
+   "MEMBER_MAPPING_ID",
+   "ALGORITHM"
+  ],
+  "types": {
+   "MAPPING_ID": "empty",
+   "CUBE_MAPPING_ID": "empty",
+   "MEMBER_MAPPING_ID": "empty",
+   "ALGORITHM": "empty"
+  },
+  "rows": 0
+ },
+ "CUBE_STRUCTURE_MAPPING_ITEM": {
+  "columns": [
+   "MAPPING_ID",
+   "CUBE_VARIABLE_CODE",
+   "IS_SOURCE",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "types": {
+   "MAPPING_ID": "empty",
+   "CUBE_VARIABLE_CODE": "empty",
+   "IS_SOURCE": "empty",
+   "VALID_FROM": "empty",
+   "VALID_TO": "empty"
+  },
+  "rows": 0
+ },
+ "AXIS": {
+  "columns": [
+   "AXIS_ID",
+   "CODE",
+   "ORIENTATION",
+   "ORDER",
+   "NAME",
+   "DESCRIPTION",
+   "TABLE_ID",
+   "IS_OPEN_AXIS"
+  ],
+  "types": {
+   "AXIS_ID": "TEXT",
+   "CODE": "TEXT",
+   "ORIENTATION": "TEXT",
+   "ORDER": "NUMERIC",
+   "NAME": "TEXT",
+   "DESCRIPTION": "empty",
+   "TABLE_ID": "TEXT",
+   "IS_OPEN_AXIS": "BOOLEAN"
+  },
+  "rows": 1250
+ },
+ "AXIS_ORDINATE": {
+  "columns": [
+   "AXIS_ORDINATE_ID",
+   "IS_ABSTRACT_HEADER",
+   "CODE",
+   "ORDER",
+   "LEVEL",
+   "PATH",
+   "AXIS_ID",
+   "PARENT_AXIS_ORDINATE_ID",
+   "NAME",
+   "DESCRIPTION"
+  ],
+  "types": {
+   "AXIS_ORDINATE_ID": "TEXT",
+   "IS_ABSTRACT_HEADER": "BOOLEAN",
+   "CODE": "TEXT",
+   "ORDER": "NUMERIC",
+   "LEVEL": "NUMERIC",
+   "PATH": "TEXT",
+   "AXIS_ID": "TEXT",
+   "PARENT_AXIS_ORDINATE_ID": "TEXT",
+   "NAME": "TEXT",
+   "DESCRIPTION": "empty"
+  },
+  "rows": 16612
+ },
+ "CELL_POSITION": {
+  "columns": [
+   "CELL_ID",
+   "AXIS_ORDINATE_ID"
+  ],
+  "types": {
+   "CELL_ID": "TEXT",
+   "AXIS_ORDINATE_ID": "TEXT"
+  },
+  "rows": 163054
+ },
+ "ORDINATE_ITEM": {
+  "columns": [
+   "AXIS_ORDINATE_ID",
+   "VARIABLE_ID",
+   "MEMBER_ID",
+   "MEMBER_HIERARCHY_ID",
+   "MEMBER_HIERARCHY_VALID_FROM",
+   "STARTING_MEMBER_ID",
+   "IS_STARTING_MEMBER_INCLUDED"
+  ],
+  "types": {
+   "AXIS_ORDINATE_ID": "TEXT",
+   "VARIABLE_ID": "TEXT",
+   "MEMBER_ID": "TEXT",
+   "MEMBER_HIERARCHY_ID": "empty",
+   "MEMBER_HIERARCHY_VALID_FROM": "empty",
+   "STARTING_MEMBER_ID": "empty",
+   "IS_STARTING_MEMBER_INCLUDED": "BOOLEAN"
+  },
+  "rows": 81877
+ },
+ "TABLE": {
+  "columns": [
+   "TABLE_ID",
+   "NAME",
+   "CODE",
+   "DESCRIPTION",
+   "MAINTENANCE_AGENCY_ID",
+   "VERSION",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "types": {
+   "TABLE_ID": "TEXT",
+   "NAME": "TEXT",
+   "CODE": "TEXT",
+   "DESCRIPTION": "TEXT",
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "VERSION": "TEXT",
+   "VALID_FROM": "DATE",
+   "VALID_TO": "DATE"
+  },
+  "rows": 604
+ },
+ "TABLE_CELL": {
+  "columns": [
+   "CELL_ID",
+   "IS_SHADED",
+   "COMBINATION_ID",
+   "TABLE_ID",
+   "SYSTEM_DATA_CODE"
+  ],
+  "types": {
+   "CELL_ID": "TEXT",
+   "IS_SHADED": "BOOLEAN",
+   "COMBINATION_ID": "TEXT",
+   "TABLE_ID": "TEXT",
+   "SYSTEM_DATA_CODE": "empty"
+  },
+  "rows": 80422
+ },
+ "CUBE_TO_TABLE": {
+  "columns": [
+   "CUBE_ID",
+   "TABLE_ID"
+  ],
+  "types": {
+   "CUBE_ID": "TEXT",
+   "TABLE_ID": "TEXT"
+  },
+  "rows": 604
+ },
+ "TRANSFORMATION": {
+  "columns": [
+   "TRANSFORMATION_ID",
+   "TRANSFORMATION_SCHEME_ID",
+   "MAINTENANCE_AGENCY_ID",
+   "NAME",
+   "CODE",
+   "DESCRIPTION",
+   "EXPRESSION",
+   "VALID_FROM",
+   "VALID_TO",
+   "ORDER"
+  ],
+  "types": {
+   "TRANSFORMATION_ID": "empty",
+   "TRANSFORMATION_SCHEME_ID": "empty",
+   "MAINTENANCE_AGENCY_ID": "empty",
+   "NAME": "empty",
+   "CODE": "empty",
+   "DESCRIPTION": "empty",
+   "EXPRESSION": "empty",
+   "VALID_FROM": "empty",
+   "VALID_TO": "empty",
+   "ORDER": "empty"
+  },
+  "rows": 0
+ },
+ "TRANSFORMATION_NODE": {
+  "columns": [
+   "TRANSFORMATION_NODE_ID",
+   "TRANSFORMATION_ID",
+   "TYPE_OF_NODE",
+   "EXPRESSION",
+   "PARENT_NODE_ID",
+   "LEVEL",
+   "ORDER"
+  ],
+  "types": {
+   "TRANSFORMATION_NODE_ID": "empty",
+   "TRANSFORMATION_ID": "empty",
+   "TYPE_OF_NODE": "empty",
+   "EXPRESSION": "empty",
+   "PARENT_NODE_ID": "empty",
+   "LEVEL": "empty",
+   "ORDER": "empty"
+  },
+  "rows": 0
+ },
+ "TRANSFORMATION_SCHEME": {
+  "columns": [
+   "TRANSFORMATION_SCHEME_ID",
+   "MAINTENANCE_AGENCY_ID",
+   "NAME",
+   "CODE",
+   "DESCRIPTION",
+   "TYPE_OF_SCHEME",
+   "EXPRESSION",
+   "PHASE",
+   "VALID_FROM",
+   "VALID_TO",
+   "VERSION"
+  ],
+  "types": {
+   "TRANSFORMATION_SCHEME_ID": "empty",
+   "MAINTENANCE_AGENCY_ID": "empty",
+   "NAME": "empty",
+   "CODE": "empty",
+   "DESCRIPTION": "empty",
+   "TYPE_OF_SCHEME": "empty",
+   "EXPRESSION": "empty",
+   "PHASE": "empty",
+   "VALID_FROM": "empty",
+   "VALID_TO": "empty",
+   "VERSION": "empty"
+  },
+  "rows": 0
+ },
+ "SEMANTIC_TRANSFORMATION_RULE": {
+  "columns": [
+   "SEMANTIC_TRANSFORMATION_RULE_ID",
+   "TRANSFORMATION_URL",
+   "TYPE_OF_TRANSFORMATION",
+   "MAINTENANCE_AGENCY_ID",
+   "NAME",
+   "CODE",
+   "DESCRIPTION",
+   "ALGORITHM",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "types": {
+   "SEMANTIC_TRANSFORMATION_RULE_ID": "TEXT",
+   "TRANSFORMATION_URL": "TEXT",
+   "TYPE_OF_TRANSFORMATION": "TEXT",
+   "MAINTENANCE_AGENCY_ID": "TEXT",
+   "NAME": "TEXT",
+   "CODE": "TEXT",
+   "DESCRIPTION": "TEXT",
+   "ALGORITHM": "TEXT",
+   "VALID_FROM": "DATE",
+   "VALID_TO": "DATE"
+  },
+  "rows": 357
+ },
+ "TRANSFORMATION_TO_VARIABLE": {
+  "columns": [
+   "SEMANTIC_TRANSFORMATION_RULE_ID",
+   "VARIABLE_ID",
+   "IS_SOURCE"
+  ],
+  "types": {
+   "SEMANTIC_TRANSFORMATION_RULE_ID": "TEXT",
+   "VARIABLE_ID": "TEXT",
+   "IS_SOURCE": "BOOLEAN"
+  },
+  "rows": 125
+ },
+ "TRANSFORMATION_TO_CUBE": {
+  "columns": [
+   "SEMANTIC_TRANSFORMATION_RULE_ID",
+   "CUBE_ID",
+   "IS_SOURCE"
+  ],
+  "types": {
+   "SEMANTIC_TRANSFORMATION_RULE_ID": "TEXT",
+   "CUBE_ID": "TEXT",
+   "IS_SOURCE": "BOOLEAN"
+  },
+  "rows": 109
+ },
+ "LOGICAL_TRANSFORMATION_RULE": {
+  "columns": [
+   "LOGICAL_TRANSFORMATION_RULE_ID",
+   "SEMANTIC_TRANSFORMATION_RULE_ID",
+   "ALGORITHM",
+   "ADDITIONAL_FILTERS",
+   "SOURCE_LAYER",
+   "DESTINATION_LAYER",
+   "TRANSFORMATION_TYPE",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "types": {
+   "LOGICAL_TRANSFORMATION_RULE_ID": "TEXT",
+   "SEMANTIC_TRANSFORMATION_RULE_ID": "TEXT",
+   "ALGORITHM": "TEXT",
+   "ADDITIONAL_FILTERS": "empty",
+   "SOURCE_LAYER": "TEXT",
+   "DESTINATION_LAYER": "TEXT",
+   "TRANSFORMATION_TYPE": "TEXT",
+   "VALID_FROM": "DATE",
+   "VALID_TO": "DATE"
+  },
+  "rows": 379
+ },
+ "LEGAL_REFERENCE": {
+  "columns": [
+   "OBJECT_TYPE",
+   "OBJECT_ID",
+   "LEGAL_TEXT_ID",
+   "ARTICLE",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "types": {
+   "OBJECT_TYPE": "TEXT",
+   "OBJECT_ID": "TEXT",
+   "LEGAL_TEXT_ID": "TEXT",
+   "ARTICLE": "TEXT",
+   "VALID_FROM": "DATE",
+   "VALID_TO": "DATE"
+  },
+  "rows": 366
+ },
+ "LEGAL_TEXT": {
+  "columns": [
+   "LEGAL_TEXT_ID",
+   "LEGAL_CODE",
+   "LEGAL_DESCRIPTION",
+   "BUSINESS_DESCRIPTION",
+   "HYPERLINK"
+  ],
+  "types": {
+   "LEGAL_TEXT_ID": "TEXT",
+   "LEGAL_CODE": "TEXT",
+   "LEGAL_DESCRIPTION": "TEXT",
+   "BUSINESS_DESCRIPTION": "TEXT",
+   "HYPERLINK": "TEXT"
+  },
+  "rows": 38
+ },
+ "CLASSIFICATION": {
+  "columns": [
+   "CLASSIFICATION_ID",
+   "CODE",
+   "NAME",
+   "DESCRIPTION"
+  ],
+  "types": {
+   "CLASSIFICATION_ID": "empty",
+   "CODE": "empty",
+   "NAME": "empty",
+   "DESCRIPTION": "empty"
+  },
+  "rows": 0
+ },
+ "CLASSIFICATION_ASSIGNMENT": {
+  "columns": [
+   "OBJECT_TYPE",
+   "OBJECT_ID",
+   "CLASSIFICATION_ID",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "types": {
+   "OBJECT_TYPE": "empty",
+   "OBJECT_ID": "empty",
+   "CLASSIFICATION_ID": "empty",
+   "VALID_FROM": "empty",
+   "VALID_TO": "empty"
+  },
+  "rows": 0
+ }
+}

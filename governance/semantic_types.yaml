@@ -1,0 +1,444 @@
+# Governed semantic-type vocabulary for ADIRRA.
+# Resolution only assigns a type_id from this list, or the reserved value "unresolved".
+#
+# Tier 2 type list (20 types total).
+# Governing rule: a type_id earns a slot only if it has a validator OR distinct
+# downstream handling. Modifiers (account vs counterparty, balance vs amount) are
+# captured by the 'entity' facet, not by separate type_ids.
+#
+# confirmation_kind: validator | distribution | shape | none
+#   (regex is NOT a confirmation_kind value — a `value_regex` detector is evaluated
+#    for any type that declares one, independent of this field.)
+# scope_source: global_standard | national_standard | distribution | default
+# pii block: is_pii + category (personal_identity|financial_account|contact|personal_name|location|business_id)
+
+# ── Validator-backed identifiers ─────────────────────────────────────────────
+# Natural ID types carry their domain in the id (natural_<format>). Each has a
+# real-world authority/format, so a validated value is near-certain.
+- id: natural_iban
+  label: IBAN
+  category: natural_id
+  primitive: [string]
+  confirmation_kind: validator
+  scope_source: global_standard
+  pii: {is_pii: true, category: financial_account}
+  detectors:
+    name_tokens: [iban]
+    value_regex: "^[A-Z]{2}[0-9]{2}[A-Z0-9]{1,30}$"
+    validator: mod97
+  expectations: [non_null, unique_ish, mod97_valid]
+  regulatory: {bird: null, note: "CRR/COREP — account identifiers must be valid IBANs"}
+
+- id: natural_bic
+  label: BIC / SWIFT
+  category: natural_id
+  primitive: [string]
+  confirmation_kind: validator
+  scope_source: global_standard
+  pii: {is_pii: false, category: null}
+  detectors:
+    name_tokens: [bic, swift]
+    value_regex: "^[A-Z]{4}[A-Z]{2}[A-Z0-9][2-9A-Z]([A-Z0-9]{3})?$"
+    validator: bic_structure
+  expectations: [non_null, valid_bic]
+  regulatory: {bird: null, note: "Required to identify financial institutions in cross-border reporting"}
+
+- id: natural_lei
+  label: LEI
+  category: natural_id
+  primitive: [string]
+  confirmation_kind: validator
+  scope_source: global_standard
+  pii: {is_pii: false, category: null}
+  detectors:
+    name_tokens: [lei, legal_entity_identifier]
+    value_regex: "^[A-Z0-9]{18}[0-9]{2}$"
+    validator: lei_checksum
+  expectations: [non_null, lei_checksum_valid]
+  regulatory: {bird: null, note: "ISO 17442 — counterparty identification for regulatory submissions"}
+
+- id: natural_isin
+  label: ISIN
+  category: natural_id
+  primitive: [string]
+  confirmation_kind: validator
+  scope_source: global_standard
+  pii: {is_pii: false, category: null}
+  detectors:
+    name_tokens: [isin, isin_code, security_id, instrument_id]
+    value_regex: "^[A-Z]{2}[A-Z0-9]{9}[0-9]$"
+    validator: isin_checksum
+  expectations: [non_null, isin_checksum_valid]
+  regulatory: {bird: null, note: "ISO 6166 — international securities identification number"}
+
+- id: natural_henkilotunnus
+  label: Finnish Personal ID (Henkilötunnus)
+  category: natural_id
+  primitive: [string]
+  confirmation_kind: validator
+  scope_source: national_standard
+  pii: {is_pii: true, category: personal_identity}
+  detectors:
+    name_tokens: [hetu, henkilotunnus, personal_id, person_id, ssn_fi, pid_fi]
+    value_regex: "^[0-9]{6}[-+ABCDEFUVWXY][0-9]{3}[0-9A-Z]$"
+    validator: hetu_checksum
+  expectations: [non_null, unique_ish, hetu_checksum_valid]
+  regulatory: {bird: null, note: "Finnish national personal identity code — PII, GDPR Art. 9"}
+
+- id: natural_yritystunnus
+  label: Finnish Business ID (Y-tunnus)
+  category: natural_id
+  primitive: [string]
+  confirmation_kind: validator
+  scope_source: national_standard
+  pii: {is_pii: false, category: null}
+  detectors:
+    name_tokens: [ytunnus, y_tunnus, business_id, yritystunnus, company_id_fi]
+    value_regex: "^[0-9]{7}-[0-9]$"
+    validator: y_tunnus_checksum
+  expectations: [non_null, y_tunnus_checksum_valid]
+  regulatory: {bird: null, note: "Finnish Business Information System identifier"}
+
+# ── Generic NATURAL identifier — an identifier that carries real-world meaning
+#    (it's the key of an external/real-world entity) but has no known global or
+#    national format validator, e.g. an internal branch code or customer number.
+#    Rarely rule-assigned from values alone (a natural-vs-surrogate call is hard
+#    from data); usually reached via glossary/definition, value-overlap with
+#    another table's key, or steward/LLM judgement. ──
+- id: natural_key
+  label: Natural Key
+  category: natural_id
+  primitive: [string, integer, decimal]
+  confirmation_kind: distribution
+  scope_source: default
+  pii: {is_pii: false, category: null}
+  detectors:
+    name_tokens: [natural_key, business_key, business_key_id]
+    value_regex: null
+    validator: null
+  expectations: [non_null, unique_ish]
+  regulatory: {bird: null, note: null}
+
+# ── Generic SURROGATE system id — a system-minted identifier with no external
+#    meaning (serial, sequence, opaque _id/_key). This is the DEFAULT landing zone
+#    for any identifier-shaped column that is not a known Natural format and not a
+#    recognised UUID/hash: generic _id/_key columns and high-uniqueness primary-key
+#    members. (Absorbs the pre-split generic 'identifier' type; legacy
+#    'identifier'/'surrogate_identifier' records alias here.) ──
+- id: surrogate_systemid
+  label: Surrogate System ID
+  category: surrogate_id
+  primitive: [string, integer, decimal]
+  confirmation_kind: distribution
+  scope_source: default
+  pii: {is_pii: false, category: null}
+  detectors:
+    name_tokens: [_id, _key, _ref, _no, _num, _number, id, pk, seq,
+                  account_id, acct_id, counterparty_id, cpty_id, customer_id,
+                  client_id, contract_id, loan_id, facility_id, deal_id,
+                  trade_id, branch, branch_code, account_no, acct_no,
+                  account_number, acc_id]
+    value_regex: null
+    validator: null
+  expectations: [non_null, unique_ish]
+  regulatory: {bird: null, note: null}
+
+# ── Surrogate UUID / GUID — a system-minted identifier in the canonical dashed
+#    8-4-4-4-12 form (any version, with optional {braces} / urn:uuid: prefix). The
+#    structure is distinctive enough to VALIDATE, so a match is high-confidence. ──
+- id: surrogate_uuid
+  label: Surrogate UUID / GUID
+  category: surrogate_id
+  primitive: [string]
+  confirmation_kind: validator
+  scope_source: default
+  pii: {is_pii: false, category: null}
+  detectors:
+    name_tokens: [uuid, guid, uid]
+    value_regex: "^(urn:uuid:)?\\{?[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\\}?$"
+    validator: uuid_format
+  expectations: [non_null, unique_ish, valid_uuid]
+  regulatory: {bird: null, note: null}
+
+# ── Surrogate hash / opaque token — fixed-length hex (MD5=32, SHA-1=40,
+#    SHA-256=64, SHA-512=128) with high uniqueness. This is SHAPE-ONLY: a hash
+#    cannot be verified (any fixed-length hex id looks identical), so it is only
+#    ever a low-confidence suggestion, never a validated match. ──
+- id: surrogate_hash
+  label: Surrogate Hash / Opaque Token
+  category: surrogate_id
+  primitive: [string]
+  confirmation_kind: none
+  scope_source: default
+  pii: {is_pii: false, category: null}
+  detectors:
+    name_tokens: [hash, hashkey, hash_key, checksum, digest, fingerprint,
+                  sha, sha1, sha256, sha512, md5]
+    value_regex: null
+    validator: null
+  expectations: [non_null, unique_ish]
+  regulatory: {bird: null, note: "Shape-only guess — a hash cannot be verified, only recognised by its fixed-length hex shape."}
+
+# ── Validator-backed codes ────────────────────────────────────────────────────
+- id: currency_code
+  label: Currency Code (ISO 4217)
+  category: code
+  primitive: [string]
+  confirmation_kind: validator
+  scope_source: global_standard
+  pii: {is_pii: false, category: null}
+  detectors:
+    name_tokens: [currency, ccy, curr, iso_currency]
+    value_regex: "^[A-Z]{3}$"
+    validator: iso4217
+  expectations: [non_null, iso4217_valid]
+  regulatory: {bird: null, note: null}
+
+- id: country_code
+  label: Country Code (ISO 3166)
+  category: code
+  primitive: [string]
+  confirmation_kind: validator
+  scope_source: global_standard
+  pii: {is_pii: false, category: null}
+  detectors:
+    name_tokens: [country, country_code, cntry, iso_country, jurisdiction]
+    value_regex: "^[A-Z]{2}$"
+    validator: iso3166
+  expectations: [non_null, iso3166_valid]
+  regulatory: {bird: null, note: null}
+
+# ── Generic code (absorbs status_code, product_type_code, classification_code) ──
+- id: reference_code
+  label: Reference Code
+  category: code
+  primitive: [string, integer, boolean]
+  confirmation_kind: distribution
+  scope_source: distribution
+  pii: {is_pii: false, category: null}
+  detectors:
+    name_tokens: [status, status_code, state, flag, indicator,
+                  product_type, product_code, instrument_type, asset_type,
+                  account_type, loan_type, classification, class, category,
+                  segment, sector, nace, sic, naics, type, kind, group]
+    value_regex: null
+    validator: null
+  expectations: [low_cardinality]
+  regulatory: {bird: null, note: "Low-cardinality enumerable field. Links to Reference Data."}
+
+# ── Monetary ──────────────────────────────────────────────────────────────────
+- id: monetary_amount
+  label: Monetary Amount
+  category: monetary
+  primitive: [integer, decimal]
+  confirmation_kind: shape
+  scope_source: default
+  pii: {is_pii: false, category: null}
+  detectors:
+    name_tokens: [amount, amt, nominal, notional, exposure, outstanding,
+                  balance, bal, outstanding_balance, current_balance, book_value,
+                  carrying_amount, principal, face_value, market_value,
+                  fair_value, fair_val, net_value, gross_value, present_value,
+                  intrinsic_value, dirty_price, clean_price, accrued,
+                  price, strike, strike_price, premium,
+                  consideration, proceeds, settlement_amount, par_value,
+                  limit, credit_limit, total_limit, available_limit]
+    value_regex: null
+    validator: null
+    shape:
+      primitive: [integer, decimal]
+      any_of:                                  # >=1 strong signal required to initiate
+        - decimal_scale_consistent: {min_share: 0.90, scales: [2, 3, 4]}
+        - declared_scale: {min: 2}             # forward-compat; inert until a profiler field feeds it
+        - currency_sibling: {scope: table}     # context conjunct: a currency-typed sibling column
+      none_of:                                 # negative gates - suppress initiation
+        - unique_ratio: {gte: 0.95}            # identifier signature
+        - year_like_range: true                # temporal signature
+        - low_cardinality_enum: {max_distinct: 10, max_ratio: 0.02}  # status-flag signature
+        - bounded_range: {ranges: [[-1, 1]]}   # rate signature
+  expectations: [non_null, numeric]
+  regulatory: {bird: null, note: null}
+
+- id: rate
+  label: Rate / Ratio
+  category: rate
+  primitive: [integer, decimal]
+  confirmation_kind: shape
+  scope_source: default
+  pii: {is_pii: false, category: null}
+  detectors:
+    name_tokens: [rate, coupon, yield, spread, margin, libor, euribor,
+                  interest_rate, pct, percent, percentage, ratio, fraction,
+                  ltv, pd, lgd, ead, rwa, haircut, weight, factor]
+    value_regex: null
+    validator: null
+    shape:
+      primitive: [decimal, integer]
+      any_of:
+        - bounded_range: {ranges: [[-1, 1], [0, 100]], min_share: 0.95}
+        - decimal_scale_consistent: {min_share: 0.90, scales: [4, 5, 6]}   # bp-style precision
+      none_of:
+        - unique_ratio: {gte: 0.90}
+        - year_like_range: true
+  expectations: [numeric]
+  regulatory: {bird: null, note: null}
+
+# ── Generic quantity (generic numeric measure landing zone, sibling of
+#    identifier/reference_code). Shape-passing numerics that can't be
+#    discriminated monetary-vs-rate land here. Generic-precedence demotion
+#    applies. ──
+- id: quantity
+  label: Quantity / Measure
+  category: quantity
+  primitive: [integer, decimal]
+  confirmation_kind: shape
+  scope_source: default
+  pii: {is_pii: false, category: null}
+  detectors:
+    # No name_tokens: quantity is shape-driven under evidence widening only, so it
+    # stays fully inert at flag-off (changes no existing column's resolution). It is
+    # the generic landing zone for numerics that pass shape but can't be discriminated
+    # as monetary vs rate.
+    name_tokens: []
+    value_regex: null
+    validator: null
+    shape:
+      primitive: [integer, decimal]
+      any_of:
+        - decimal_scale_consistent: {min_share: 0.80, scales: [0, 1, 2, 3, 4, 5, 6]}
+      none_of:
+        - unique_ratio: {gte: 0.95}
+        - year_like_range: true
+        - low_cardinality_enum: {max_distinct: 10, max_ratio: 0.02}
+  expectations: [numeric]
+  regulatory: {bird: null, note: null}
+
+# ── Temporal ──────────────────────────────────────────────────────────────────
+- id: date
+  label: Date
+  category: temporal
+  primitive: [date, string]
+  confirmation_kind: validator
+  scope_source: default
+  pii: {is_pii: false, category: null}
+  detectors:
+    name_tokens: [date, dt, day, reporting_date, report_date, reference_date,
+                  as_of_date, value_date, obs_date, maturity_date, maturity,
+                  expiry_date, expiry, end_date, termination_date,
+                  opening_date, closing_date, start_date, effective_date,
+                  datadate]
+    value_regex: "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    validator: date_range
+  expectations: [non_null, valid_date]
+  regulatory: {bird: null, note: null}
+
+- id: datetime
+  label: Datetime / Timestamp
+  category: temporal
+  primitive: [date, string]
+  confirmation_kind: validator
+  scope_source: default
+  pii: {is_pii: false, category: null}
+  detectors:
+    name_tokens: [datetime, timestamp, ts, created_at, updated_at,
+                  modified_at, inserted_at]
+    value_regex: null
+    validator: timestamp_parse
+  expectations: [non_null, valid_datetime]
+  regulatory: {bird: null, note: null}
+
+# ── Validator-backed text ─────────────────────────────────────────────────────
+- id: email
+  label: Email Address
+  category: text
+  primitive: [string]
+  confirmation_kind: validator
+  scope_source: global_standard
+  pii: {is_pii: true, category: contact}
+  detectors:
+    name_tokens: [email, email_address, mail]
+    value_regex: "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+    validator: email_format
+  expectations: [valid_email]
+  regulatory: {bird: null, note: null}
+
+- id: phone_number
+  label: Phone Number
+  category: text
+  primitive: [string]
+  confirmation_kind: validator
+  scope_source: global_standard
+  pii: {is_pii: true, category: contact}
+  detectors:
+    name_tokens: [phone, phone_number, mobile, tel, telephone, fax]
+    value_regex: null
+    validator: phone_format
+  expectations: [valid_phone]
+  regulatory: {bird: null, note: null}
+
+# ── Generic text ──────────────────────────────────────────────────────────────
+- id: name
+  label: Name
+  category: name
+  primitive: [string]
+  confirmation_kind: none
+  scope_source: default
+  pii: {is_pii: true, category: personal_name}
+  detectors:
+    name_tokens: [name, first_name, last_name, surname, forename, full_name,
+                  given_name, company_name, organisation_name, organization_name,
+                  entity_name, firm_name, bank_name, counterparty_name,
+                  customer_name]
+    value_regex: null
+    validator: null
+  expectations: [non_null]
+  regulatory: {bird: null, note: null}
+
+- id: address
+  label: Address
+  category: address
+  primitive: [string]
+  confirmation_kind: none
+  scope_source: default
+  pii: {is_pii: true, category: location}
+  detectors:
+    name_tokens: [address, addr, street, city, postcode, postal_code, zip]
+    value_regex: null
+    validator: null
+  expectations: []
+  regulatory: {bird: null, note: null}
+
+- id: free_text
+  label: Free Text
+  category: text
+  primitive: [string]
+  confirmation_kind: none
+  scope_source: default
+  pii: {is_pii: false, category: null}
+  detectors:
+    name_tokens: [description, comment, note, remarks, narrative, text, memo]
+    value_regex: null
+    validator: null
+  expectations: []
+  regulatory: {bird: null, note: null}
+
+# ── Technical (never maps to glossary or BIRD) ────────────────────────────────
+- id: technical
+  label: Technical / Infrastructure
+  category: technical
+  primitive: [string, integer, decimal, date, boolean]
+  confirmation_kind: none
+  scope_source: default
+  pii: {is_pii: false, category: null}
+  detectors:
+    name_tokens: [load_ts, load_timestamp, loaded_at, ingestion_ts, etl_ts,
+                  batch_id, batch_no, batch_number, run_id, job_id, process_id,
+                  partition, partition_key, part_key, shard_key,
+                  is_deleted, is_active, is_current, is_latest,
+                  row_is_current, deleted_flag, soft_delete,
+                  created_ts, modified_ts, inserted_ts]
+    value_regex: null
+    validator: null
+  expectations: []
+  regulatory: {bird: null, note: null}
+

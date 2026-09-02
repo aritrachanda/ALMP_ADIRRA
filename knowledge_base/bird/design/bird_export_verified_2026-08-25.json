@@ -1,0 +1,2594 @@
+{
+ "MAINTENANCE_AGENCY": {
+  "rows": 5,
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "CODE",
+   "NAME",
+   "DESCRIPTION",
+   "DELETED"
+  ],
+  "fill": {
+   "MAINTENANCE_AGENCY_ID": 5,
+   "CODE": 5,
+   "NAME": 5,
+   "DESCRIPTION": 4,
+   "DELETED": 5
+  },
+  "kinds": {
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "DESCRIPTION": [
+    "text"
+   ],
+   "DELETED": [
+    "boolstr"
+   ]
+  },
+  "pk": [
+   "MAINTENANCE_AGENCY_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "FRAMEWORK": {
+  "rows": 9,
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "FRAMEWORK_ID",
+   "NAME",
+   "CODE",
+   "DESCRIPTION",
+   "FRAMEWORK_TYPE",
+   "REPORTING_POPULATION",
+   "OTHER_LINKS",
+   "ORDER",
+   "FRAMEWORK_STATUS"
+  ],
+  "fill": {
+   "MAINTENANCE_AGENCY_ID": 9,
+   "FRAMEWORK_ID": 9,
+   "NAME": 9,
+   "CODE": 9,
+   "DESCRIPTION": 8,
+   "FRAMEWORK_TYPE": 1,
+   "REPORTING_POPULATION": 0,
+   "OTHER_LINKS": 0,
+   "ORDER": 9,
+   "FRAMEWORK_STATUS": 9
+  },
+  "kinds": {
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "FRAMEWORK_ID": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "DESCRIPTION": [
+    "text"
+   ],
+   "FRAMEWORK_TYPE": [
+    "text"
+   ],
+   "REPORTING_POPULATION": [],
+   "OTHER_LINKS": [],
+   "ORDER": [
+    "float"
+   ],
+   "FRAMEWORK_STATUS": [
+    "text"
+   ]
+  },
+  "pk": [
+   "FRAMEWORK_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "DOMAIN": {
+  "rows": 307,
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "DOMAIN_ID",
+   "NAME",
+   "IS_ENUMERATED",
+   "DESCRIPTION",
+   "DATA_TYPE",
+   "CODE",
+   "FACET_ID",
+   "IS_REFERENCE"
+  ],
+  "fill": {
+   "MAINTENANCE_AGENCY_ID": 307,
+   "DOMAIN_ID": 307,
+   "NAME": 307,
+   "IS_ENUMERATED": 307,
+   "DESCRIPTION": 232,
+   "DATA_TYPE": 103,
+   "CODE": 307,
+   "FACET_ID": 1,
+   "IS_REFERENCE": 307
+  },
+  "kinds": {
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "DOMAIN_ID": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "IS_ENUMERATED": [
+    "boolstr"
+   ],
+   "DESCRIPTION": [
+    "text"
+   ],
+   "DATA_TYPE": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "FACET_ID": [
+    "text"
+   ],
+   "IS_REFERENCE": [
+    "boolstr"
+   ]
+  },
+  "pk": [
+   "DOMAIN_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "FACET_COLLECTION": {
+  "rows": 117,
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "FACET_ID",
+   "CODE",
+   "NAME",
+   "FACET_VALUE_TYPE"
+  ],
+  "fill": {
+   "MAINTENANCE_AGENCY_ID": 117,
+   "FACET_ID": 117,
+   "CODE": 117,
+   "NAME": 117,
+   "FACET_VALUE_TYPE": 117
+  },
+  "kinds": {
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "FACET_ID": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "FACET_VALUE_TYPE": [
+    "text"
+   ]
+  },
+  "pk": [
+   "FACET_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "FACET_ENUMERATION": {
+  "rows": 131,
+  "columns": [
+   "FACET_ID",
+   "FACET_TYPE",
+   "OBSERVATION_VALUE"
+  ],
+  "fill": {
+   "FACET_ID": 131,
+   "FACET_TYPE": 131,
+   "OBSERVATION_VALUE": 131
+  },
+  "kinds": {
+   "FACET_ID": [
+    "text"
+   ],
+   "FACET_TYPE": [
+    "text"
+   ],
+   "OBSERVATION_VALUE": [
+    "text"
+   ]
+  },
+  "pk": [
+   "FACET_ID",
+   "FACET_TYPE",
+   "OBSERVATION_VALUE"
+  ],
+  "pk_duplicates": 0
+ },
+ "MEMBER": {
+  "rows": 22137,
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "MEMBER_ID",
+   "CODE",
+   "NAME",
+   "DOMAIN_ID",
+   "DESCRIPTION"
+  ],
+  "fill": {
+   "MAINTENANCE_AGENCY_ID": 22137,
+   "MEMBER_ID": 22137,
+   "CODE": 22137,
+   "NAME": 22137,
+   "DOMAIN_ID": 22137,
+   "DESCRIPTION": 8806
+  },
+  "kinds": {
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "MEMBER_ID": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "NAME": [
+    "boolstr",
+    "text"
+   ],
+   "DOMAIN_ID": [
+    "text"
+   ],
+   "DESCRIPTION": [
+    "boolstr",
+    "text"
+   ]
+  },
+  "pk": [
+   "MEMBER_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "MEMBER_HIERARCHY": {
+  "rows": 1481,
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "MEMBER_HIERARCHY_ID",
+   "CODE",
+   "DOMAIN_ID",
+   "NAME",
+   "DESCRIPTION",
+   "IS_MAIN_HIERARCHY"
+  ],
+  "fill": {
+   "MAINTENANCE_AGENCY_ID": 1481,
+   "MEMBER_HIERARCHY_ID": 1481,
+   "CODE": 1481,
+   "DOMAIN_ID": 1481,
+   "NAME": 1481,
+   "DESCRIPTION": 901,
+   "IS_MAIN_HIERARCHY": 752
+  },
+  "kinds": {
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "MEMBER_HIERARCHY_ID": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "DOMAIN_ID": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "DESCRIPTION": [
+    "text"
+   ],
+   "IS_MAIN_HIERARCHY": [
+    "boolstr"
+   ]
+  },
+  "pk": [
+   "MEMBER_HIERARCHY_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "MEMBER_HIERARCHY_NODE": {
+  "rows": 44773,
+  "columns": [
+   "MEMBER_HIERARCHY_ID",
+   "MEMBER_ID",
+   "LEVEL",
+   "PARENT_MEMBER_ID",
+   "COMPARATOR",
+   "OPERATOR",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "fill": {
+   "MEMBER_HIERARCHY_ID": 44773,
+   "MEMBER_ID": 44773,
+   "LEVEL": 44773,
+   "PARENT_MEMBER_ID": 25424,
+   "COMPARATOR": 27022,
+   "OPERATOR": 12831,
+   "VALID_FROM": 44773,
+   "VALID_TO": 44773
+  },
+  "kinds": {
+   "MEMBER_HIERARCHY_ID": [
+    "text"
+   ],
+   "MEMBER_ID": [
+    "text"
+   ],
+   "LEVEL": [
+    "float"
+   ],
+   "PARENT_MEMBER_ID": [
+    "text"
+   ],
+   "COMPARATOR": [
+    "text"
+   ],
+   "OPERATOR": [
+    "text"
+   ],
+   "VALID_FROM": [
+    "date"
+   ],
+   "VALID_TO": [
+    "date"
+   ]
+  },
+  "pk": [
+   "MEMBER_HIERARCHY_ID",
+   "MEMBER_ID"
+  ],
+  "pk_duplicates": 6652
+ },
+ "SUBDOMAIN": {
+  "rows": 2522,
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "SUBDOMAIN_ID",
+   "NAME",
+   "DOMAIN_ID",
+   "IS_LISTED",
+   "CODE",
+   "FACET_ID",
+   "DESCRIPTION",
+   "IS_NATURAL"
+  ],
+  "fill": {
+   "MAINTENANCE_AGENCY_ID": 2522,
+   "SUBDOMAIN_ID": 2522,
+   "NAME": 2522,
+   "DOMAIN_ID": 2522,
+   "IS_LISTED": 2522,
+   "CODE": 2522,
+   "FACET_ID": 117,
+   "DESCRIPTION": 908,
+   "IS_NATURAL": 2522
+  },
+  "kinds": {
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "SUBDOMAIN_ID": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "DOMAIN_ID": [
+    "text"
+   ],
+   "IS_LISTED": [
+    "boolstr"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "FACET_ID": [
+    "text"
+   ],
+   "DESCRIPTION": [
+    "text"
+   ],
+   "IS_NATURAL": [
+    "boolstr"
+   ]
+  },
+  "pk": [
+   "SUBDOMAIN_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "SUBDOMAIN_ENUMERATION": {
+  "rows": 43501,
+  "columns": [
+   "MEMBER_ID",
+   "SUBDOMAIN_ID",
+   "VALID_FROM",
+   "VALID_TO",
+   "ORDER"
+  ],
+  "fill": {
+   "MEMBER_ID": 43501,
+   "SUBDOMAIN_ID": 43501,
+   "VALID_FROM": 43501,
+   "VALID_TO": 43501,
+   "ORDER": 43501
+  },
+  "kinds": {
+   "MEMBER_ID": [
+    "text"
+   ],
+   "SUBDOMAIN_ID": [
+    "text"
+   ],
+   "VALID_FROM": [
+    "date"
+   ],
+   "VALID_TO": [
+    "date"
+   ],
+   "ORDER": [
+    "float"
+   ]
+  },
+  "pk": [
+   "MEMBER_ID",
+   "SUBDOMAIN_ID"
+  ],
+  "pk_duplicates": 6388
+ },
+ "VARIABLE": {
+  "rows": 2144,
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "VARIABLE_ID",
+   "CODE",
+   "NAME",
+   "DOMAIN_ID",
+   "DESCRIPTION",
+   "PRIMARY_CONCEPT",
+   "IS_DECOMPOSED"
+  ],
+  "fill": {
+   "MAINTENANCE_AGENCY_ID": 2144,
+   "VARIABLE_ID": 2144,
+   "CODE": 2144,
+   "NAME": 2144,
+   "DOMAIN_ID": 2144,
+   "DESCRIPTION": 1946,
+   "PRIMARY_CONCEPT": 176,
+   "IS_DECOMPOSED": 211
+  },
+  "kinds": {
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "VARIABLE_ID": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "DOMAIN_ID": [
+    "text"
+   ],
+   "DESCRIPTION": [
+    "text"
+   ],
+   "PRIMARY_CONCEPT": [
+    "text"
+   ],
+   "IS_DECOMPOSED": [
+    "boolstr"
+   ]
+  },
+  "pk": [
+   "VARIABLE_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "VARIABLE_SET": {
+  "rows": 2557,
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "VARIABLE_SET_ID",
+   "NAME",
+   "CODE",
+   "DESCRIPTION"
+  ],
+  "fill": {
+   "MAINTENANCE_AGENCY_ID": 2557,
+   "VARIABLE_SET_ID": 2557,
+   "NAME": 2557,
+   "CODE": 2557,
+   "DESCRIPTION": 2414
+  },
+  "kinds": {
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "VARIABLE_SET_ID": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "DESCRIPTION": [
+    "text"
+   ]
+  },
+  "pk": [
+   "VARIABLE_SET_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "VARIABLE_SET_ENUMERATION": {
+  "rows": 3616,
+  "columns": [
+   "VARIABLE_SET_ID",
+   "VARIABLE_ID",
+   "VALID_FROM",
+   "VALID_TO",
+   "SUBDOMAIN_ID",
+   "IS_FLOW",
+   "ORDER"
+  ],
+  "fill": {
+   "VARIABLE_SET_ID": 3616,
+   "VARIABLE_ID": 3616,
+   "VALID_FROM": 3616,
+   "VALID_TO": 3616,
+   "SUBDOMAIN_ID": 3616,
+   "IS_FLOW": 3616,
+   "ORDER": 3616
+  },
+  "kinds": {
+   "VARIABLE_SET_ID": [
+    "text"
+   ],
+   "VARIABLE_ID": [
+    "text"
+   ],
+   "VALID_FROM": [
+    "date"
+   ],
+   "VALID_TO": [
+    "date"
+   ],
+   "SUBDOMAIN_ID": [
+    "text"
+   ],
+   "IS_FLOW": [
+    "boolstr"
+   ],
+   "ORDER": [
+    "float"
+   ]
+  },
+  "pk": [
+   "VARIABLE_SET_ID",
+   "VARIABLE_ID"
+  ],
+  "pk_duplicates": 344
+ },
+ "COMBINATION": {
+  "rows": 34709,
+  "columns": [
+   "COMBINATION_ID",
+   "CODE",
+   "NAME",
+   "MAINTENANCE_AGENCY_ID",
+   "VERSION",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "fill": {
+   "COMBINATION_ID": 34709,
+   "CODE": 34709,
+   "NAME": 34709,
+   "MAINTENANCE_AGENCY_ID": 34709,
+   "VERSION": 34709,
+   "VALID_FROM": 34709,
+   "VALID_TO": 34709
+  },
+  "kinds": {
+   "COMBINATION_ID": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "VERSION": [
+    "text"
+   ],
+   "VALID_FROM": [
+    "date"
+   ],
+   "VALID_TO": [
+    "date"
+   ]
+  },
+  "pk": [
+   "COMBINATION_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "COMBINATION_ITEM": {
+  "rows": 641198,
+  "columns": [
+   "COMBINATION_ID",
+   "VARIABLE_ID",
+   "SUBDOMAIN_ID",
+   "VARIABLE_SET_ID",
+   "MEMBER_ID"
+  ],
+  "fill": {
+   "COMBINATION_ID": 641198,
+   "VARIABLE_ID": 641198,
+   "SUBDOMAIN_ID": 147640,
+   "VARIABLE_SET_ID": 34698,
+   "MEMBER_ID": 458860
+  },
+  "kinds": {
+   "COMBINATION_ID": [
+    "text"
+   ],
+   "VARIABLE_ID": [
+    "text"
+   ],
+   "SUBDOMAIN_ID": [
+    "text"
+   ],
+   "VARIABLE_SET_ID": [
+    "text"
+   ],
+   "MEMBER_ID": [
+    "text"
+   ]
+  },
+  "pk": [
+   "COMBINATION_ID",
+   "VARIABLE_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "CUBE": {
+  "rows": 2146,
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "CUBE_ID",
+   "NAME",
+   "CODE",
+   "FRAMEWORK_ID",
+   "CUBE_STRUCTURE_ID",
+   "CUBE_TYPE",
+   "IS_ALLOWED",
+   "VALID_FROM",
+   "VALID_TO",
+   "VERSION",
+   "DESCRIPTION",
+   "PUBLISHED",
+   "DATASET_URL",
+   "FILTERS",
+   "DI_EXPORT"
+  ],
+  "fill": {
+   "MAINTENANCE_AGENCY_ID": 2146,
+   "CUBE_ID": 2146,
+   "NAME": 2146,
+   "CODE": 2146,
+   "FRAMEWORK_ID": 2146,
+   "CUBE_STRUCTURE_ID": 2146,
+   "CUBE_TYPE": 2146,
+   "IS_ALLOWED": 0,
+   "VALID_FROM": 2146,
+   "VALID_TO": 2146,
+   "VERSION": 2146,
+   "DESCRIPTION": 1848,
+   "PUBLISHED": 2146,
+   "DATASET_URL": 0,
+   "FILTERS": 0,
+   "DI_EXPORT": 0
+  },
+  "kinds": {
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "CUBE_ID": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "FRAMEWORK_ID": [
+    "text"
+   ],
+   "CUBE_STRUCTURE_ID": [
+    "text"
+   ],
+   "CUBE_TYPE": [
+    "text"
+   ],
+   "IS_ALLOWED": [],
+   "VALID_FROM": [
+    "date"
+   ],
+   "VALID_TO": [
+    "date"
+   ],
+   "VERSION": [
+    "text"
+   ],
+   "DESCRIPTION": [
+    "text"
+   ],
+   "PUBLISHED": [
+    "boolstr"
+   ],
+   "DATASET_URL": [],
+   "FILTERS": [],
+   "DI_EXPORT": []
+  },
+  "pk": [
+   "CUBE_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "CUBE_GROUP": {
+  "rows": 81,
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "CUBE_GROUP_ID",
+   "NAME",
+   "CODE",
+   "DESCRIPTION"
+  ],
+  "fill": {
+   "MAINTENANCE_AGENCY_ID": 81,
+   "CUBE_GROUP_ID": 81,
+   "NAME": 81,
+   "CODE": 81,
+   "DESCRIPTION": 78
+  },
+  "kinds": {
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "CUBE_GROUP_ID": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "DESCRIPTION": [
+    "text"
+   ]
+  },
+  "pk": [
+   "CUBE_GROUP_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "CUBE_GROUP_ENUMERATION": {
+  "rows": 1454,
+  "columns": [
+   "ORDER",
+   "CUBE_GROUP_ID",
+   "CUBE_ID",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "fill": {
+   "ORDER": 1454,
+   "CUBE_GROUP_ID": 1454,
+   "CUBE_ID": 1454,
+   "VALID_FROM": 1454,
+   "VALID_TO": 1454
+  },
+  "kinds": {
+   "ORDER": [
+    "float"
+   ],
+   "CUBE_GROUP_ID": [
+    "text"
+   ],
+   "CUBE_ID": [
+    "text"
+   ],
+   "VALID_FROM": [
+    "date"
+   ],
+   "VALID_TO": [
+    "date"
+   ]
+  },
+  "pk": [
+   "CUBE_GROUP_ID",
+   "CUBE_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "CUBE_HIERARCHY": {
+  "rows": 6,
+  "columns": [
+   "CUBE_HIERARCHY_ID",
+   "MAINTENANCE_AGENCY_ID",
+   "NAME",
+   "CODE",
+   "DESCRIPTION",
+   "CUBE_HIERARCHY_TYPE",
+   "FRAMEWORK_ID"
+  ],
+  "fill": {
+   "CUBE_HIERARCHY_ID": 6,
+   "MAINTENANCE_AGENCY_ID": 6,
+   "NAME": 6,
+   "CODE": 6,
+   "DESCRIPTION": 0,
+   "CUBE_HIERARCHY_TYPE": 6,
+   "FRAMEWORK_ID": 6
+  },
+  "kinds": {
+   "CUBE_HIERARCHY_ID": [
+    "text"
+   ],
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "DESCRIPTION": [],
+   "CUBE_HIERARCHY_TYPE": [
+    "text"
+   ],
+   "FRAMEWORK_ID": [
+    "text"
+   ]
+  },
+  "pk": [
+   "CUBE_HIERARCHY_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "CUBE_HIERARCHY_NODE": {
+  "rows": 81,
+  "columns": [
+   "CUBE_HIERARCHY_ID",
+   "NODE_CODE",
+   "NODE_NAME",
+   "LEVEL",
+   "PARENT_NODE_CODE",
+   "CUBE_GROUP_ID",
+   "VALID_FROM",
+   "VALID_TO",
+   "ORDER",
+   "COLOUR"
+  ],
+  "fill": {
+   "CUBE_HIERARCHY_ID": 81,
+   "NODE_CODE": 81,
+   "NODE_NAME": 81,
+   "LEVEL": 81,
+   "PARENT_NODE_CODE": 0,
+   "CUBE_GROUP_ID": 81,
+   "VALID_FROM": 81,
+   "VALID_TO": 81,
+   "ORDER": 81,
+   "COLOUR": 72
+  },
+  "kinds": {
+   "CUBE_HIERARCHY_ID": [
+    "text"
+   ],
+   "NODE_CODE": [
+    "text"
+   ],
+   "NODE_NAME": [
+    "text"
+   ],
+   "LEVEL": [
+    "float"
+   ],
+   "PARENT_NODE_CODE": [],
+   "CUBE_GROUP_ID": [
+    "text"
+   ],
+   "VALID_FROM": [
+    "date"
+   ],
+   "VALID_TO": [
+    "date"
+   ],
+   "ORDER": [
+    "float"
+   ],
+   "COLOUR": [
+    "text"
+   ]
+  },
+  "pk": [
+   "CUBE_HIERARCHY_ID",
+   "NODE_CODE"
+  ],
+  "pk_duplicates": 0
+ },
+ "CUBE_RELATIONSHIP": {
+  "rows": 6592,
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "CUBE_RELATIONSHIP_ID",
+   "CODE",
+   "NAME",
+   "DESCRIPTION",
+   "TYPE_OF_RELATIONSHIP",
+   "VALID_FROM",
+   "VALID_TO",
+   "VERSION",
+   "PRIMARY_CUBE_ID",
+   "PRIMARY_CUBE_VARIABLE_CODE",
+   "FOREIGN_CUBE_ID",
+   "FOREIGN_CUBE_VARIABLE_CODE",
+   "PRIMARY_CUBE_CARDINALITY",
+   "FOREIGN_CUBE_CARDINALITY",
+   "PRIMARY_CUBE_MANDATORINESS",
+   "FOREIGN_CUBE_MANDATORINESS"
+  ],
+  "fill": {
+   "MAINTENANCE_AGENCY_ID": 6592,
+   "CUBE_RELATIONSHIP_ID": 6592,
+   "CODE": 6592,
+   "NAME": 6592,
+   "DESCRIPTION": 3708,
+   "TYPE_OF_RELATIONSHIP": 6592,
+   "VALID_FROM": 6592,
+   "VALID_TO": 6592,
+   "VERSION": 6592,
+   "PRIMARY_CUBE_ID": 6592,
+   "PRIMARY_CUBE_VARIABLE_CODE": 5698,
+   "FOREIGN_CUBE_ID": 6592,
+   "FOREIGN_CUBE_VARIABLE_CODE": 5698,
+   "PRIMARY_CUBE_CARDINALITY": 5698,
+   "FOREIGN_CUBE_CARDINALITY": 5698,
+   "PRIMARY_CUBE_MANDATORINESS": 6592,
+   "FOREIGN_CUBE_MANDATORINESS": 6592
+  },
+  "kinds": {
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "CUBE_RELATIONSHIP_ID": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "DESCRIPTION": [
+    "text"
+   ],
+   "TYPE_OF_RELATIONSHIP": [
+    "text"
+   ],
+   "VALID_FROM": [
+    "date"
+   ],
+   "VALID_TO": [
+    "date"
+   ],
+   "VERSION": [
+    "text"
+   ],
+   "PRIMARY_CUBE_ID": [
+    "text"
+   ],
+   "PRIMARY_CUBE_VARIABLE_CODE": [
+    "text"
+   ],
+   "FOREIGN_CUBE_ID": [
+    "text"
+   ],
+   "FOREIGN_CUBE_VARIABLE_CODE": [
+    "text"
+   ],
+   "PRIMARY_CUBE_CARDINALITY": [
+    "text"
+   ],
+   "FOREIGN_CUBE_CARDINALITY": [
+    "text"
+   ],
+   "PRIMARY_CUBE_MANDATORINESS": [
+    "boolstr"
+   ],
+   "FOREIGN_CUBE_MANDATORINESS": [
+    "boolstr"
+   ]
+  },
+  "pk": [
+   "CUBE_RELATIONSHIP_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "CUBE_LINK": {
+  "rows": 2202,
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "CUBE_LINK_ID",
+   "CODE",
+   "NAME",
+   "DESCRIPTION",
+   "VALID_FROM",
+   "VALID_TO",
+   "VERSION",
+   "ORDER_RELEVANCE",
+   "PRIMARY_CUBE_ID",
+   "FOREIGN_CUBE_ID",
+   "CUBE_LINK_TYPE",
+   "LOGICAL_TRANSFORMATION_RULE_ID"
+  ],
+  "fill": {
+   "MAINTENANCE_AGENCY_ID": 2202,
+   "CUBE_LINK_ID": 2202,
+   "CODE": 2202,
+   "NAME": 2202,
+   "DESCRIPTION": 0,
+   "VALID_FROM": 2202,
+   "VALID_TO": 2202,
+   "VERSION": 2202,
+   "ORDER_RELEVANCE": 2202,
+   "PRIMARY_CUBE_ID": 2202,
+   "FOREIGN_CUBE_ID": 2202,
+   "CUBE_LINK_TYPE": 2202,
+   "LOGICAL_TRANSFORMATION_RULE_ID": 2202
+  },
+  "kinds": {
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "CUBE_LINK_ID": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "DESCRIPTION": [],
+   "VALID_FROM": [
+    "date"
+   ],
+   "VALID_TO": [
+    "date"
+   ],
+   "VERSION": [
+    "text"
+   ],
+   "ORDER_RELEVANCE": [
+    "float"
+   ],
+   "PRIMARY_CUBE_ID": [
+    "text"
+   ],
+   "FOREIGN_CUBE_ID": [
+    "text"
+   ],
+   "CUBE_LINK_TYPE": [
+    "text"
+   ],
+   "LOGICAL_TRANSFORMATION_RULE_ID": [
+    "text"
+   ]
+  },
+  "pk": [
+   "CUBE_LINK_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "CUBE_STRUCTURE_ITEM_LINK": {
+  "rows": 11851,
+  "columns": [
+   "CUBE_STRUCTURE_ITEM_LINK_ID",
+   "CUBE_LINK_ID",
+   "FOREIGN_CUBE_VARIABLE_CODE",
+   "PRIMARY_CUBE_VARIABLE_CODE",
+   "COMPARATOR",
+   "AGGREGATION_FUNCTION"
+  ],
+  "fill": {
+   "CUBE_STRUCTURE_ITEM_LINK_ID": 11851,
+   "CUBE_LINK_ID": 11851,
+   "FOREIGN_CUBE_VARIABLE_CODE": 11851,
+   "PRIMARY_CUBE_VARIABLE_CODE": 11851,
+   "COMPARATOR": 2841,
+   "AGGREGATION_FUNCTION": 643
+  },
+  "kinds": {
+   "CUBE_STRUCTURE_ITEM_LINK_ID": [
+    "text"
+   ],
+   "CUBE_LINK_ID": [
+    "text"
+   ],
+   "FOREIGN_CUBE_VARIABLE_CODE": [
+    "text"
+   ],
+   "PRIMARY_CUBE_VARIABLE_CODE": [
+    "text"
+   ],
+   "COMPARATOR": [
+    "text"
+   ],
+   "AGGREGATION_FUNCTION": [
+    "text"
+   ]
+  },
+  "pk": [
+   "CUBE_STRUCTURE_ITEM_LINK_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "MEMBER_LINK": {
+  "rows": 1000000,
+  "columns": [
+   "CUBE_STRUCTURE_ITEM_LINK_ID",
+   "FOREIGN_MEMBER_ID",
+   "PRIMARY_MEMBER_ID",
+   "VALID_FROM",
+   "VALID_TO",
+   "IS_LINKED"
+  ],
+  "fill": {
+   "CUBE_STRUCTURE_ITEM_LINK_ID": 1000000,
+   "FOREIGN_MEMBER_ID": 1000000,
+   "PRIMARY_MEMBER_ID": 1000000,
+   "VALID_FROM": 1000000,
+   "VALID_TO": 1000000,
+   "IS_LINKED": 1000000
+  },
+  "kinds": {
+   "CUBE_STRUCTURE_ITEM_LINK_ID": [
+    "text"
+   ],
+   "FOREIGN_MEMBER_ID": [
+    "text"
+   ],
+   "PRIMARY_MEMBER_ID": [
+    "text"
+   ],
+   "VALID_FROM": [
+    "date"
+   ],
+   "VALID_TO": [
+    "date"
+   ],
+   "IS_LINKED": [
+    "boolstr"
+   ]
+  },
+  "pk": [
+   "CUBE_STRUCTURE_ITEM_LINK_ID",
+   "FOREIGN_MEMBER_ID",
+   "PRIMARY_MEMBER_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "MEMBER_LINK_(2)": {
+  "rows": 81317,
+  "columns": [
+   "CUBE_STRUCTURE_ITEM_LINK_ID",
+   "FOREIGN_MEMBER_ID",
+   "PRIMARY_MEMBER_ID",
+   "VALID_FROM",
+   "VALID_TO",
+   "IS_LINKED"
+  ],
+  "fill": {
+   "CUBE_STRUCTURE_ITEM_LINK_ID": 81317,
+   "FOREIGN_MEMBER_ID": 81317,
+   "PRIMARY_MEMBER_ID": 81317,
+   "VALID_FROM": 81317,
+   "VALID_TO": 81317,
+   "IS_LINKED": 81317
+  },
+  "kinds": {
+   "CUBE_STRUCTURE_ITEM_LINK_ID": [
+    "text"
+   ],
+   "FOREIGN_MEMBER_ID": [
+    "text"
+   ],
+   "PRIMARY_MEMBER_ID": [
+    "text"
+   ],
+   "VALID_FROM": [
+    "date"
+   ],
+   "VALID_TO": [
+    "date"
+   ],
+   "IS_LINKED": [
+    "boolstr"
+   ]
+  },
+  "pk": [
+   "CUBE_STRUCTURE_ITEM_LINK_ID",
+   "FOREIGN_MEMBER_ID",
+   "PRIMARY_MEMBER_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "CUBE_STRUCTURE": {
+  "rows": 2146,
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "CUBE_STRUCTURE_ID",
+   "NAME",
+   "CODE",
+   "DESCRIPTION",
+   "VALID_FROM",
+   "VALID_TO",
+   "VERSION"
+  ],
+  "fill": {
+   "MAINTENANCE_AGENCY_ID": 2146,
+   "CUBE_STRUCTURE_ID": 2146,
+   "NAME": 2146,
+   "CODE": 2146,
+   "DESCRIPTION": 1794,
+   "VALID_FROM": 2146,
+   "VALID_TO": 2146,
+   "VERSION": 2146
+  },
+  "kinds": {
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "CUBE_STRUCTURE_ID": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "DESCRIPTION": [
+    "text"
+   ],
+   "VALID_FROM": [
+    "date"
+   ],
+   "VALID_TO": [
+    "date"
+   ],
+   "VERSION": [
+    "text"
+   ]
+  },
+  "pk": [
+   "CUBE_STRUCTURE_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "CUBE_STRUCTURE_ITEM": {
+  "rows": 23355,
+  "columns": [
+   "CUBE_STRUCTURE_ITEM_ID",
+   "CUBE_STRUCTURE_ID",
+   "CUBE_VARIABLE_CODE",
+   "VARIABLE_ID",
+   "ROLE",
+   "ORDER",
+   "SUBDOMAIN_ID",
+   "VARIABLE_SET_ID",
+   "MEMBER_ID",
+   "DIMENSION_TYPE",
+   "ATTRIBUTE_ASSOCIATED_VARIABLE",
+   "IS_FLOW",
+   "IS_MANDATORY",
+   "DESCRIPTION",
+   "IS_IMPLEMENTED"
+  ],
+  "fill": {
+   "CUBE_STRUCTURE_ITEM_ID": 23355,
+   "CUBE_STRUCTURE_ID": 23355,
+   "CUBE_VARIABLE_CODE": 23355,
+   "VARIABLE_ID": 23355,
+   "ROLE": 23355,
+   "ORDER": 22943,
+   "SUBDOMAIN_ID": 21302,
+   "VARIABLE_SET_ID": 682,
+   "MEMBER_ID": 1372,
+   "DIMENSION_TYPE": 9158,
+   "ATTRIBUTE_ASSOCIATED_VARIABLE": 750,
+   "IS_FLOW": 23355,
+   "IS_MANDATORY": 23355,
+   "DESCRIPTION": 17721,
+   "IS_IMPLEMENTED": 23355
+  },
+  "kinds": {
+   "CUBE_STRUCTURE_ITEM_ID": [
+    "text"
+   ],
+   "CUBE_STRUCTURE_ID": [
+    "text"
+   ],
+   "CUBE_VARIABLE_CODE": [
+    "text"
+   ],
+   "VARIABLE_ID": [
+    "text"
+   ],
+   "ROLE": [
+    "text"
+   ],
+   "ORDER": [
+    "float"
+   ],
+   "SUBDOMAIN_ID": [
+    "text"
+   ],
+   "VARIABLE_SET_ID": [
+    "text"
+   ],
+   "MEMBER_ID": [
+    "text"
+   ],
+   "DIMENSION_TYPE": [
+    "text"
+   ],
+   "ATTRIBUTE_ASSOCIATED_VARIABLE": [
+    "text"
+   ],
+   "IS_FLOW": [
+    "boolstr"
+   ],
+   "IS_MANDATORY": [
+    "boolstr"
+   ],
+   "DESCRIPTION": [
+    "text"
+   ],
+   "IS_IMPLEMENTED": [
+    "boolstr"
+   ]
+  },
+  "pk": [
+   "CUBE_STRUCTURE_ITEM_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "CUBE_TO_COMBINATION": {
+  "rows": 68884,
+  "columns": [
+   "CUBE_ID",
+   "COMBINATION_ID"
+  ],
+  "fill": {
+   "CUBE_ID": 68884,
+   "COMBINATION_ID": 68884
+  },
+  "kinds": {
+   "CUBE_ID": [
+    "text"
+   ],
+   "COMBINATION_ID": [
+    "text"
+   ]
+  },
+  "pk": [
+   "CUBE_ID",
+   "COMBINATION_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "FRAMEWORK_HIERARCHY": {
+  "rows": 0,
+  "columns": [
+   "FRAMEWORK_ID",
+   "MEMBER_HIERARCHY_ID"
+  ],
+  "fill": {
+   "FRAMEWORK_ID": 0,
+   "MEMBER_HIERARCHY_ID": 0
+  },
+  "kinds": {
+   "FRAMEWORK_ID": [],
+   "MEMBER_HIERARCHY_ID": []
+  },
+  "pk": null,
+  "pk_duplicates": null
+ },
+ "FRAMEWORK_SUBDOMAIN": {
+  "rows": 0,
+  "columns": [
+   "FRAMEWORK_ID",
+   "SUBDOMAIN_ID"
+  ],
+  "fill": {
+   "FRAMEWORK_ID": 0,
+   "SUBDOMAIN_ID": 0
+  },
+  "kinds": {
+   "FRAMEWORK_ID": [],
+   "SUBDOMAIN_ID": []
+  },
+  "pk": null,
+  "pk_duplicates": null
+ },
+ "FRAMEWORK_VARIABLE_SET": {
+  "rows": 1,
+  "columns": [
+   "FRAMEWORK_ID",
+   "VARIABLE_SET_ID"
+  ],
+  "fill": {
+   "FRAMEWORK_ID": 1,
+   "VARIABLE_SET_ID": 1
+  },
+  "kinds": {
+   "FRAMEWORK_ID": [
+    "text"
+   ],
+   "VARIABLE_SET_ID": [
+    "text"
+   ]
+  },
+  "pk": [
+   "FRAMEWORK_ID",
+   "VARIABLE_SET_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "CUBE_MAPPING": {
+  "rows": 175,
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "CUBE_MAPPING_ID",
+   "NAME",
+   "CODE",
+   "SOURCE_CUBE_ID",
+   "DESTINATION_CUBE_ID",
+   "DESCRIPTION"
+  ],
+  "fill": {
+   "MAINTENANCE_AGENCY_ID": 175,
+   "CUBE_MAPPING_ID": 175,
+   "NAME": 175,
+   "CODE": 175,
+   "SOURCE_CUBE_ID": 175,
+   "DESTINATION_CUBE_ID": 175,
+   "DESCRIPTION": 175
+  },
+  "kinds": {
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "CUBE_MAPPING_ID": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "SOURCE_CUBE_ID": [
+    "text"
+   ],
+   "DESTINATION_CUBE_ID": [
+    "text"
+   ],
+   "DESCRIPTION": [
+    "text"
+   ]
+  },
+  "pk": [
+   "CUBE_MAPPING_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "COMBINATION_MAPPING": {
+  "rows": 0,
+  "columns": [
+   "SOURCE_COMBINATION_ID",
+   "DESTINATION_COMBINATION_ID"
+  ],
+  "fill": {
+   "SOURCE_COMBINATION_ID": 0,
+   "DESTINATION_COMBINATION_ID": 0
+  },
+  "kinds": {
+   "SOURCE_COMBINATION_ID": [],
+   "DESTINATION_COMBINATION_ID": []
+  },
+  "pk": null,
+  "pk_duplicates": null
+ },
+ "MAPPING_DEFINITION": {
+  "rows": 438,
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "MAPPING_ID",
+   "NAME",
+   "MAPPING_TYPE",
+   "CODE",
+   "ALGORITHM",
+   "MEMBER_MAPPING_ID",
+   "VARIABLE_MAPPING_ID"
+  ],
+  "fill": {
+   "MAINTENANCE_AGENCY_ID": 438,
+   "MAPPING_ID": 438,
+   "NAME": 438,
+   "MAPPING_TYPE": 438,
+   "CODE": 438,
+   "ALGORITHM": 0,
+   "MEMBER_MAPPING_ID": 220,
+   "VARIABLE_MAPPING_ID": 438
+  },
+  "kinds": {
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "MAPPING_ID": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "MAPPING_TYPE": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "ALGORITHM": [],
+   "MEMBER_MAPPING_ID": [
+    "text"
+   ],
+   "VARIABLE_MAPPING_ID": [
+    "text"
+   ]
+  },
+  "pk": [
+   "MAPPING_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "MAPPING_TO_CUBE": {
+  "rows": 1582,
+  "columns": [
+   "CUBE_MAPPING_ID",
+   "MAPPING_ID",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "fill": {
+   "CUBE_MAPPING_ID": 1582,
+   "MAPPING_ID": 1582,
+   "VALID_FROM": 1582,
+   "VALID_TO": 1582
+  },
+  "kinds": {
+   "CUBE_MAPPING_ID": [
+    "text"
+   ],
+   "MAPPING_ID": [
+    "text"
+   ],
+   "VALID_FROM": [
+    "date"
+   ],
+   "VALID_TO": [
+    "date"
+   ]
+  },
+  "pk": [
+   "CUBE_MAPPING_ID",
+   "MAPPING_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "MEMBER_MAPPING": {
+  "rows": 220,
+  "columns": [
+   "MAINTENANCE_AGENCY_ID",
+   "MEMBER_MAPPING_ID",
+   "NAME",
+   "CODE"
+  ],
+  "fill": {
+   "MAINTENANCE_AGENCY_ID": 220,
+   "MEMBER_MAPPING_ID": 220,
+   "NAME": 220,
+   "CODE": 220
+  },
+  "kinds": {
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "MEMBER_MAPPING_ID": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ]
+  },
+  "pk": [
+   "MEMBER_MAPPING_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "MEMBER_MAPPING_ITEM": {
+  "rows": 39190,
+  "columns": [
+   "MEMBER_MAPPING_ID",
+   "MEMBER_MAPPING_ROW",
+   "VARIABLE_ID",
+   "IS_SOURCE",
+   "MEMBER_ID",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "fill": {
+   "MEMBER_MAPPING_ID": 39190,
+   "MEMBER_MAPPING_ROW": 39190,
+   "VARIABLE_ID": 39190,
+   "IS_SOURCE": 39190,
+   "MEMBER_ID": 39190,
+   "VALID_FROM": 39190,
+   "VALID_TO": 39190
+  },
+  "kinds": {
+   "MEMBER_MAPPING_ID": [
+    "text"
+   ],
+   "MEMBER_MAPPING_ROW": [
+    "float"
+   ],
+   "VARIABLE_ID": [
+    "text"
+   ],
+   "IS_SOURCE": [
+    "boolstr"
+   ],
+   "MEMBER_ID": [
+    "text"
+   ],
+   "VALID_FROM": [
+    "date"
+   ],
+   "VALID_TO": [
+    "date"
+   ]
+  },
+  "pk": [
+   "MEMBER_MAPPING_ID",
+   "MEMBER_MAPPING_ROW",
+   "VARIABLE_ID",
+   "MEMBER_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "VARIABLE_MAPPING": {
+  "rows": 438,
+  "columns": [
+   "VARIABLE_MAPPING_ID",
+   "MAINTENANCE_AGENCY_ID",
+   "CODE",
+   "NAME"
+  ],
+  "fill": {
+   "VARIABLE_MAPPING_ID": 438,
+   "MAINTENANCE_AGENCY_ID": 438,
+   "CODE": 438,
+   "NAME": 438
+  },
+  "kinds": {
+   "VARIABLE_MAPPING_ID": [
+    "text"
+   ],
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ]
+  },
+  "pk": [
+   "VARIABLE_MAPPING_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "VARIABLE_MAPPING_ITEM": {
+  "rows": 1509,
+  "columns": [
+   "VARIABLE_MAPPING_ID",
+   "VARIABLE_ID",
+   "IS_SOURCE",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "fill": {
+   "VARIABLE_MAPPING_ID": 1509,
+   "VARIABLE_ID": 1509,
+   "IS_SOURCE": 1509,
+   "VALID_FROM": 1509,
+   "VALID_TO": 1509
+  },
+  "kinds": {
+   "VARIABLE_MAPPING_ID": [
+    "text"
+   ],
+   "VARIABLE_ID": [
+    "text"
+   ],
+   "IS_SOURCE": [
+    "boolstr"
+   ],
+   "VALID_FROM": [
+    "date"
+   ],
+   "VALID_TO": [
+    "date"
+   ]
+  },
+  "pk": [
+   "VARIABLE_MAPPING_ID",
+   "VARIABLE_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "VARIABLE_SET_MAPPING": {
+  "rows": 151,
+  "columns": [
+   "SOURCE_MAPPING_ID",
+   "TARGET_MAPPING_ID"
+  ],
+  "fill": {
+   "SOURCE_MAPPING_ID": 151,
+   "TARGET_MAPPING_ID": 151
+  },
+  "kinds": {
+   "SOURCE_MAPPING_ID": [
+    "text"
+   ],
+   "TARGET_MAPPING_ID": [
+    "text"
+   ]
+  },
+  "pk": [
+   "SOURCE_MAPPING_ID",
+   "TARGET_MAPPING_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "CUBE_STRUCTURE_MAPPING": {
+  "rows": 0,
+  "columns": [
+   "MAPPING_ID",
+   "CUBE_MAPPING_ID",
+   "MEMBER_MAPPING_ID",
+   "ALGORITHM"
+  ],
+  "fill": {
+   "MAPPING_ID": 0,
+   "CUBE_MAPPING_ID": 0,
+   "MEMBER_MAPPING_ID": 0,
+   "ALGORITHM": 0
+  },
+  "kinds": {
+   "MAPPING_ID": [],
+   "CUBE_MAPPING_ID": [],
+   "MEMBER_MAPPING_ID": [],
+   "ALGORITHM": []
+  },
+  "pk": null,
+  "pk_duplicates": null
+ },
+ "CUBE_STRUCTURE_MAPPING_ITEM": {
+  "rows": 0,
+  "columns": [
+   "MAPPING_ID",
+   "CUBE_VARIABLE_CODE",
+   "IS_SOURCE",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "fill": {
+   "MAPPING_ID": 0,
+   "CUBE_VARIABLE_CODE": 0,
+   "IS_SOURCE": 0,
+   "VALID_FROM": 0,
+   "VALID_TO": 0
+  },
+  "kinds": {
+   "MAPPING_ID": [],
+   "CUBE_VARIABLE_CODE": [],
+   "IS_SOURCE": [],
+   "VALID_FROM": [],
+   "VALID_TO": []
+  },
+  "pk": null,
+  "pk_duplicates": null
+ },
+ "AXIS": {
+  "rows": 1250,
+  "columns": [
+   "AXIS_ID",
+   "CODE",
+   "ORIENTATION",
+   "ORDER",
+   "NAME",
+   "DESCRIPTION",
+   "TABLE_ID",
+   "IS_OPEN_AXIS"
+  ],
+  "fill": {
+   "AXIS_ID": 1250,
+   "CODE": 1250,
+   "ORIENTATION": 1250,
+   "ORDER": 1250,
+   "NAME": 1250,
+   "DESCRIPTION": 0,
+   "TABLE_ID": 1250,
+   "IS_OPEN_AXIS": 1250
+  },
+  "kinds": {
+   "AXIS_ID": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "ORIENTATION": [
+    "text"
+   ],
+   "ORDER": [
+    "float"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "DESCRIPTION": [],
+   "TABLE_ID": [
+    "text"
+   ],
+   "IS_OPEN_AXIS": [
+    "boolstr"
+   ]
+  },
+  "pk": [
+   "AXIS_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "AXIS_ORDINATE": {
+  "rows": 16612,
+  "columns": [
+   "AXIS_ORDINATE_ID",
+   "IS_ABSTRACT_HEADER",
+   "CODE",
+   "ORDER",
+   "LEVEL",
+   "PATH",
+   "AXIS_ID",
+   "PARENT_AXIS_ORDINATE_ID",
+   "NAME",
+   "DESCRIPTION"
+  ],
+  "fill": {
+   "AXIS_ORDINATE_ID": 16612,
+   "IS_ABSTRACT_HEADER": 16612,
+   "CODE": 16612,
+   "ORDER": 16612,
+   "LEVEL": 16612,
+   "PATH": 16612,
+   "AXIS_ID": 16612,
+   "PARENT_AXIS_ORDINATE_ID": 12697,
+   "NAME": 16612,
+   "DESCRIPTION": 0
+  },
+  "kinds": {
+   "AXIS_ORDINATE_ID": [
+    "text"
+   ],
+   "IS_ABSTRACT_HEADER": [
+    "boolstr"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "ORDER": [
+    "float"
+   ],
+   "LEVEL": [
+    "float"
+   ],
+   "PATH": [
+    "text"
+   ],
+   "AXIS_ID": [
+    "text"
+   ],
+   "PARENT_AXIS_ORDINATE_ID": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "DESCRIPTION": []
+  },
+  "pk": [
+   "AXIS_ORDINATE_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "CELL_POSITION": {
+  "rows": 163054,
+  "columns": [
+   "CELL_ID",
+   "AXIS_ORDINATE_ID"
+  ],
+  "fill": {
+   "CELL_ID": 163054,
+   "AXIS_ORDINATE_ID": 163054
+  },
+  "kinds": {
+   "CELL_ID": [
+    "text"
+   ],
+   "AXIS_ORDINATE_ID": [
+    "text"
+   ]
+  },
+  "pk": [
+   "CELL_ID",
+   "AXIS_ORDINATE_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "ORDINATE_ITEM": {
+  "rows": 81877,
+  "columns": [
+   "AXIS_ORDINATE_ID",
+   "VARIABLE_ID",
+   "MEMBER_ID",
+   "MEMBER_HIERARCHY_ID",
+   "MEMBER_HIERARCHY_VALID_FROM",
+   "STARTING_MEMBER_ID",
+   "IS_STARTING_MEMBER_INCLUDED"
+  ],
+  "fill": {
+   "AXIS_ORDINATE_ID": 81877,
+   "VARIABLE_ID": 81877,
+   "MEMBER_ID": 77362,
+   "MEMBER_HIERARCHY_ID": 42,
+   "MEMBER_HIERARCHY_VALID_FROM": 0,
+   "STARTING_MEMBER_ID": 42,
+   "IS_STARTING_MEMBER_INCLUDED": 81877
+  },
+  "kinds": {
+   "AXIS_ORDINATE_ID": [
+    "text"
+   ],
+   "VARIABLE_ID": [
+    "text"
+   ],
+   "MEMBER_ID": [
+    "text"
+   ],
+   "MEMBER_HIERARCHY_ID": [
+    "text"
+   ],
+   "MEMBER_HIERARCHY_VALID_FROM": [],
+   "STARTING_MEMBER_ID": [
+    "text"
+   ],
+   "IS_STARTING_MEMBER_INCLUDED": [
+    "boolstr"
+   ]
+  },
+  "pk": [
+   "AXIS_ORDINATE_ID",
+   "VARIABLE_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "TABLE": {
+  "rows": 604,
+  "columns": [
+   "TABLE_ID",
+   "NAME",
+   "CODE",
+   "DESCRIPTION",
+   "MAINTENANCE_AGENCY_ID",
+   "VERSION",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "fill": {
+   "TABLE_ID": 604,
+   "NAME": 604,
+   "CODE": 604,
+   "DESCRIPTION": 408,
+   "MAINTENANCE_AGENCY_ID": 604,
+   "VERSION": 604,
+   "VALID_FROM": 604,
+   "VALID_TO": 604
+  },
+  "kinds": {
+   "TABLE_ID": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "DESCRIPTION": [
+    "text"
+   ],
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "VERSION": [
+    "text"
+   ],
+   "VALID_FROM": [
+    "date"
+   ],
+   "VALID_TO": [
+    "date"
+   ]
+  },
+  "pk": [
+   "TABLE_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "TABLE_CELL": {
+  "rows": 80422,
+  "columns": [
+   "CELL_ID",
+   "IS_SHADED",
+   "COMBINATION_ID",
+   "TABLE_ID",
+   "SYSTEM_DATA_CODE"
+  ],
+  "fill": {
+   "CELL_ID": 80422,
+   "IS_SHADED": 80422,
+   "COMBINATION_ID": 62148,
+   "TABLE_ID": 80422,
+   "SYSTEM_DATA_CODE": 0
+  },
+  "kinds": {
+   "CELL_ID": [
+    "text"
+   ],
+   "IS_SHADED": [
+    "boolstr"
+   ],
+   "COMBINATION_ID": [
+    "text"
+   ],
+   "TABLE_ID": [
+    "text"
+   ],
+   "SYSTEM_DATA_CODE": []
+  },
+  "pk": [
+   "CELL_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "CUBE_TO_TABLE": {
+  "rows": 604,
+  "columns": [
+   "CUBE_ID",
+   "TABLE_ID"
+  ],
+  "fill": {
+   "CUBE_ID": 604,
+   "TABLE_ID": 604
+  },
+  "kinds": {
+   "CUBE_ID": [
+    "text"
+   ],
+   "TABLE_ID": [
+    "text"
+   ]
+  },
+  "pk": [
+   "CUBE_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "TRANSFORMATION": {
+  "rows": 0,
+  "columns": [
+   "TRANSFORMATION_ID",
+   "TRANSFORMATION_SCHEME_ID",
+   "MAINTENANCE_AGENCY_ID",
+   "NAME",
+   "CODE",
+   "DESCRIPTION",
+   "EXPRESSION",
+   "VALID_FROM",
+   "VALID_TO",
+   "ORDER"
+  ],
+  "fill": {
+   "TRANSFORMATION_ID": 0,
+   "TRANSFORMATION_SCHEME_ID": 0,
+   "MAINTENANCE_AGENCY_ID": 0,
+   "NAME": 0,
+   "CODE": 0,
+   "DESCRIPTION": 0,
+   "EXPRESSION": 0,
+   "VALID_FROM": 0,
+   "VALID_TO": 0,
+   "ORDER": 0
+  },
+  "kinds": {
+   "TRANSFORMATION_ID": [],
+   "TRANSFORMATION_SCHEME_ID": [],
+   "MAINTENANCE_AGENCY_ID": [],
+   "NAME": [],
+   "CODE": [],
+   "DESCRIPTION": [],
+   "EXPRESSION": [],
+   "VALID_FROM": [],
+   "VALID_TO": [],
+   "ORDER": []
+  },
+  "pk": null,
+  "pk_duplicates": null
+ },
+ "TRANSFORMATION_NODE": {
+  "rows": 0,
+  "columns": [
+   "TRANSFORMATION_NODE_ID",
+   "TRANSFORMATION_ID",
+   "TYPE_OF_NODE",
+   "EXPRESSION",
+   "PARENT_NODE_ID",
+   "LEVEL",
+   "ORDER"
+  ],
+  "fill": {
+   "TRANSFORMATION_NODE_ID": 0,
+   "TRANSFORMATION_ID": 0,
+   "TYPE_OF_NODE": 0,
+   "EXPRESSION": 0,
+   "PARENT_NODE_ID": 0,
+   "LEVEL": 0,
+   "ORDER": 0
+  },
+  "kinds": {
+   "TRANSFORMATION_NODE_ID": [],
+   "TRANSFORMATION_ID": [],
+   "TYPE_OF_NODE": [],
+   "EXPRESSION": [],
+   "PARENT_NODE_ID": [],
+   "LEVEL": [],
+   "ORDER": []
+  },
+  "pk": null,
+  "pk_duplicates": null
+ },
+ "TRANSFORMATION_SCHEME": {
+  "rows": 0,
+  "columns": [
+   "TRANSFORMATION_SCHEME_ID",
+   "MAINTENANCE_AGENCY_ID",
+   "NAME",
+   "CODE",
+   "DESCRIPTION",
+   "TYPE_OF_SCHEME",
+   "EXPRESSION",
+   "PHASE",
+   "VALID_FROM",
+   "VALID_TO",
+   "VERSION"
+  ],
+  "fill": {
+   "TRANSFORMATION_SCHEME_ID": 0,
+   "MAINTENANCE_AGENCY_ID": 0,
+   "NAME": 0,
+   "CODE": 0,
+   "DESCRIPTION": 0,
+   "TYPE_OF_SCHEME": 0,
+   "EXPRESSION": 0,
+   "PHASE": 0,
+   "VALID_FROM": 0,
+   "VALID_TO": 0,
+   "VERSION": 0
+  },
+  "kinds": {
+   "TRANSFORMATION_SCHEME_ID": [],
+   "MAINTENANCE_AGENCY_ID": [],
+   "NAME": [],
+   "CODE": [],
+   "DESCRIPTION": [],
+   "TYPE_OF_SCHEME": [],
+   "EXPRESSION": [],
+   "PHASE": [],
+   "VALID_FROM": [],
+   "VALID_TO": [],
+   "VERSION": []
+  },
+  "pk": null,
+  "pk_duplicates": null
+ },
+ "SEMANTIC_TRANSFORMATION_RULE": {
+  "rows": 357,
+  "columns": [
+   "SEMANTIC_TRANSFORMATION_RULE_ID",
+   "TRANSFORMATION_URL",
+   "TYPE_OF_TRANSFORMATION",
+   "MAINTENANCE_AGENCY_ID",
+   "NAME",
+   "CODE",
+   "DESCRIPTION",
+   "ALGORITHM",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "fill": {
+   "SEMANTIC_TRANSFORMATION_RULE_ID": 357,
+   "TRANSFORMATION_URL": 130,
+   "TYPE_OF_TRANSFORMATION": 357,
+   "MAINTENANCE_AGENCY_ID": 357,
+   "NAME": 357,
+   "CODE": 357,
+   "DESCRIPTION": 130,
+   "ALGORITHM": 25,
+   "VALID_FROM": 357,
+   "VALID_TO": 357
+  },
+  "kinds": {
+   "SEMANTIC_TRANSFORMATION_RULE_ID": [
+    "text"
+   ],
+   "TRANSFORMATION_URL": [
+    "text"
+   ],
+   "TYPE_OF_TRANSFORMATION": [
+    "text"
+   ],
+   "MAINTENANCE_AGENCY_ID": [
+    "text"
+   ],
+   "NAME": [
+    "text"
+   ],
+   "CODE": [
+    "text"
+   ],
+   "DESCRIPTION": [
+    "text"
+   ],
+   "ALGORITHM": [
+    "text"
+   ],
+   "VALID_FROM": [
+    "date"
+   ],
+   "VALID_TO": [
+    "date"
+   ]
+  },
+  "pk": [
+   "SEMANTIC_TRANSFORMATION_RULE_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "TRANSFORMATION_TO_VARIABLE": {
+  "rows": 125,
+  "columns": [
+   "SEMANTIC_TRANSFORMATION_RULE_ID",
+   "VARIABLE_ID",
+   "IS_SOURCE"
+  ],
+  "fill": {
+   "SEMANTIC_TRANSFORMATION_RULE_ID": 125,
+   "VARIABLE_ID": 125,
+   "IS_SOURCE": 125
+  },
+  "kinds": {
+   "SEMANTIC_TRANSFORMATION_RULE_ID": [
+    "text"
+   ],
+   "VARIABLE_ID": [
+    "text"
+   ],
+   "IS_SOURCE": [
+    "boolstr"
+   ]
+  },
+  "pk": [
+   "SEMANTIC_TRANSFORMATION_RULE_ID",
+   "VARIABLE_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "TRANSFORMATION_TO_CUBE": {
+  "rows": 109,
+  "columns": [
+   "SEMANTIC_TRANSFORMATION_RULE_ID",
+   "CUBE_ID",
+   "IS_SOURCE"
+  ],
+  "fill": {
+   "SEMANTIC_TRANSFORMATION_RULE_ID": 109,
+   "CUBE_ID": 109,
+   "IS_SOURCE": 109
+  },
+  "kinds": {
+   "SEMANTIC_TRANSFORMATION_RULE_ID": [
+    "text"
+   ],
+   "CUBE_ID": [
+    "text"
+   ],
+   "IS_SOURCE": [
+    "boolstr"
+   ]
+  },
+  "pk": [
+   "SEMANTIC_TRANSFORMATION_RULE_ID",
+   "CUBE_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "LOGICAL_TRANSFORMATION_RULE": {
+  "rows": 379,
+  "columns": [
+   "LOGICAL_TRANSFORMATION_RULE_ID",
+   "SEMANTIC_TRANSFORMATION_RULE_ID",
+   "ALGORITHM",
+   "ADDITIONAL_FILTERS",
+   "SOURCE_LAYER",
+   "DESTINATION_LAYER",
+   "TRANSFORMATION_TYPE",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "fill": {
+   "LOGICAL_TRANSFORMATION_RULE_ID": 379,
+   "SEMANTIC_TRANSFORMATION_RULE_ID": 379,
+   "ALGORITHM": 47,
+   "ADDITIONAL_FILTERS": 0,
+   "SOURCE_LAYER": 379,
+   "DESTINATION_LAYER": 379,
+   "TRANSFORMATION_TYPE": 379,
+   "VALID_FROM": 379,
+   "VALID_TO": 379
+  },
+  "kinds": {
+   "LOGICAL_TRANSFORMATION_RULE_ID": [
+    "text"
+   ],
+   "SEMANTIC_TRANSFORMATION_RULE_ID": [
+    "text"
+   ],
+   "ALGORITHM": [
+    "text"
+   ],
+   "ADDITIONAL_FILTERS": [],
+   "SOURCE_LAYER": [
+    "text"
+   ],
+   "DESTINATION_LAYER": [
+    "text"
+   ],
+   "TRANSFORMATION_TYPE": [
+    "text"
+   ],
+   "VALID_FROM": [
+    "date"
+   ],
+   "VALID_TO": [
+    "date"
+   ]
+  },
+  "pk": [
+   "LOGICAL_TRANSFORMATION_RULE_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "LEGAL_REFERENCE": {
+  "rows": 366,
+  "columns": [
+   "OBJECT_TYPE",
+   "OBJECT_ID",
+   "LEGAL_TEXT_ID",
+   "ARTICLE",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "fill": {
+   "OBJECT_TYPE": 366,
+   "OBJECT_ID": 366,
+   "LEGAL_TEXT_ID": 366,
+   "ARTICLE": 366,
+   "VALID_FROM": 366,
+   "VALID_TO": 366
+  },
+  "kinds": {
+   "OBJECT_TYPE": [
+    "text"
+   ],
+   "OBJECT_ID": [
+    "text"
+   ],
+   "LEGAL_TEXT_ID": [
+    "text"
+   ],
+   "ARTICLE": [
+    "text"
+   ],
+   "VALID_FROM": [
+    "date"
+   ],
+   "VALID_TO": [
+    "date"
+   ]
+  },
+  "pk": [
+   "LEGAL_REFERENCE_ID"
+  ],
+  "pk_duplicates": null
+ },
+ "LEGAL_TEXT": {
+  "rows": 38,
+  "columns": [
+   "LEGAL_TEXT_ID",
+   "LEGAL_CODE",
+   "LEGAL_DESCRIPTION",
+   "BUSINESS_DESCRIPTION",
+   "HYPERLINK"
+  ],
+  "fill": {
+   "LEGAL_TEXT_ID": 38,
+   "LEGAL_CODE": 38,
+   "LEGAL_DESCRIPTION": 38,
+   "BUSINESS_DESCRIPTION": 38,
+   "HYPERLINK": 38
+  },
+  "kinds": {
+   "LEGAL_TEXT_ID": [
+    "text"
+   ],
+   "LEGAL_CODE": [
+    "text"
+   ],
+   "LEGAL_DESCRIPTION": [
+    "text"
+   ],
+   "BUSINESS_DESCRIPTION": [
+    "text"
+   ],
+   "HYPERLINK": [
+    "text"
+   ]
+  },
+  "pk": [
+   "LEGAL_TEXT_ID"
+  ],
+  "pk_duplicates": 0
+ },
+ "CLASSIFICATION": {
+  "rows": 0,
+  "columns": [
+   "CLASSIFICATION_ID",
+   "CODE",
+   "NAME",
+   "DESCRIPTION"
+  ],
+  "fill": {
+   "CLASSIFICATION_ID": 0,
+   "CODE": 0,
+   "NAME": 0,
+   "DESCRIPTION": 0
+  },
+  "kinds": {
+   "CLASSIFICATION_ID": [],
+   "CODE": [],
+   "NAME": [],
+   "DESCRIPTION": []
+  },
+  "pk": null,
+  "pk_duplicates": null
+ },
+ "CLASSIFICATION_ASSIGNMENT": {
+  "rows": 0,
+  "columns": [
+   "OBJECT_TYPE",
+   "OBJECT_ID",
+   "CLASSIFICATION_ID",
+   "VALID_FROM",
+   "VALID_TO"
+  ],
+  "fill": {
+   "OBJECT_TYPE": 0,
+   "OBJECT_ID": 0,
+   "CLASSIFICATION_ID": 0,
+   "VALID_FROM": 0,
+   "VALID_TO": 0
+  },
+  "kinds": {
+   "OBJECT_TYPE": [],
+   "OBJECT_ID": [],
+   "CLASSIFICATION_ID": [],
+   "VALID_FROM": [],
+   "VALID_TO": []
+  },
+  "pk": null,
+  "pk_duplicates": null
+ }
+}

@@ -1,0 +1,31 @@
+# PostgreSQL 16 — governance database for ADIRRA (Business Glossary v2, first slice).
+#
+# PROVISIONAL (Prompt 01a). Not wired into the app. Started manually for dev/verify:
+#   docker compose -f db/docker-compose.yml up -d
+#   docker compose -f db/docker-compose.yml down        # stop, keep data
+#   docker compose -f db/docker-compose.yml down -v     # stop, DESTROY data (see db/README.md)
+#
+# Password comes from the ADM_DB_PASSWORD env var (put it in .env for local dev).
+# Falls back to a local-only dev value so a fresh clone boots without setup.
+services:
+  adm-postgres:
+    image: postgres:16
+    container_name: adm-postgres
+    environment:
+      POSTGRES_USER: adm
+      POSTGRES_PASSWORD: ${ADM_DB_PASSWORD:-adm_local_dev}
+      POSTGRES_DB: adm
+    ports:
+      - "5432:5432"
+    volumes:
+      - adm_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U adm -d adm"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  adm_pgdata:
+    name: adm_pgdata

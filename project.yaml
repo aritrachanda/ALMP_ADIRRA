@@ -1,0 +1,119 @@
+name: my_mapping_project
+version: 1
+connections_file: connections.yaml
+
+# Sources: datasets you are mapping FROM.
+sources:
+  - name: banking
+    connection: banking
+  - name: ALM Bank
+    connection: alm_bank
+  - name: Faker
+    connection: faker
+  - name: Kaggle
+    connection: kaggle
+
+# Targets: datasets you are mapping TO.
+targets:
+  - name: bird
+    connection: bird
+  - name: crdm
+    connection: crdm                            
+
+# Governance database — PostgreSQL (Business Glossary v2, first slice of the phased
+# YAML+DuckDB -> PostgreSQL move). PROVISIONAL: not read by the app yet (Phase 2 wires it).
+# Password is NOT stored here — it comes from the env var named by password_env (see .env).
+database:
+  host: localhost
+  port: 5432
+  name: adm
+  user: adm
+  password_env: ADM_DB_PASSWORD
+  schema: glossary
+  # Which backend serves the Business Glossary. 'yaml' = legacy glossary/glossary.yaml;
+  # 'postgres' = the v2 relational store, cut over here. Override per-process with the
+  # ADIRRA_GLOSSARY_BACKEND env var (e.g. to flip back to 'yaml' without editing this file).
+  glossary_backend: postgres
+  # Which backend serves the Data Element Interpretation lifecycle (states + review).
+  # 'yaml' = legacy governance/element_states.yaml (default); 'postgres' = the Phase-5
+  # review_subject/review_task/lifecycle_transition tables. Override per-process with the
+  # ADIRRA_ELEMENT_BACKEND env var. Flipped live after the migration + parity diff went green;
+  # governance/element_states.yaml is untouched and remains the rollback safety net.
+  element_backend: postgres
+  # Which backend serves Reference Data (per-code reviewable rows, Phase 5b.2).
+  # 'yaml' = legacy inline refdata_meanings/refdata_values/refdata_status in
+  # governance/element_states.yaml (default); 'postgres' = the reference_code table.
+  # Override per-process with the ADIRRA_REFDATA_BACKEND env var. Flipped live after the
+  # migration + parity diff went green; the legacy YAML fields are untouched either way.
+  refdata_backend: postgres
+  # Which backend serves the append-only Audit log. 'duckdb' = legacy audit/audit.duckdb
+  # (default); 'postgres' = the audit_events table. Preponed off DuckDB because the audit
+  # file lock (held for the process lifetime) is a chief cause of the single-writer "used
+  # by another process" failures on a second uvicorn. Override with ADIRRA_AUDIT_BACKEND.
+  # Flipped live after the migration + parity diff went green.
+  audit_backend: postgres
+  # Which backend serves the source/target catalog (schema + profiling metadata).
+  # 'yaml' = legacy sources/generated/*.yaml + mappings/target_catalogs/*.yaml (default);
+  # 'postgres' = catalog_source/catalog_dataset/catalog_element tables. Override per-process
+  # with the ADIRRA_CATALOG_BACKEND env var. Flipped live 2026-08-07 after Phase 8 validation
+  # (80x rebuild-all win on ALM Bank, real bugs found+fixed, user sign-off) — see
+  # openspec/changes/migrate-source-catalog-yaml-to-postgres/. Rollback: set back to 'yaml'
+  # and restart; YAML files are untouched and remain the safety net.
+  catalog_backend: postgres
+
+paths:
+  source_catalogs: sources/generated/   # merged schema + stats for sources (output of catalog_builder.py)
+  target_catalogs: mappings/target_catalogs/   # target schema catalogs (bird/crdm), frozen for now
+  mappings: mappings/results/         # agent-produced mapping artifacts
+  rag_cache: rag/             # Repo-local RAG assets used by CRR and DPM generation
+  documents_root: documents/  # source document files + metadata index
+
+agent:
+  provider: azure                # gemini | openai | azure
+  model: gpt-5.4-mini             # model name for the chosen provider
+  api_key_env: AZURE_FOUNDRY_KEY   # environment variable holding the key
+  temperature: 0
+  # How many source tables to map per LLM call (keeps prompts focused)
+  batch_size: 1
+  # Pre-filter to top-N most relevant target tables before sending to LLM.
+  # Sends all columns from those tables. Reduces token usage. 0 = send all tables.
+  max_target_tables: 10
+  # Minimum seconds between LLM calls to stay within rate limit (15 RPM = 4s apart, 5s for safety).
+  min_request_interval: 5
+  # Embedding model for FAISS index building and semantic search.
+  embedding_model: text-embedding-3-large
+  # AI sample policy for LLM prompts (client-data egress control): full | masked | stats_only.
+  # masked (default) redacts raw sample values/evidence sample strings but keeps
+  # counts/stats/shape metrics; stats_only drops samples entirely; full sends everything.
+  ai_sample_policy: masked
+
+semantic_type_resolver:
+  high_threshold: 0.85       # ≥ this → proposed (high)
+  floor_threshold: 0.60      # 0.60–0.84 → proposed (review); 0.45–0.59 → suggested; <0.45 → unresolved
+  suggested_threshold: 0.45  # T3 floor — name-only evidence lands here
+  tier_validated: 0.90       # T1 base — named validator passed ≥ validator_decisive
+  tier_structural: 0.70      # T2 base — regex ≥ 0.80, or distribution-confirmed
+  tier_suggested: 0.45       # T3 base — name token / weak structural only
+  adjustment_cap: 0.08       # max positive nudge from corroborating evidence
+  validator_decisive: 0.95   # at/above → full T1
+  validator_confirm_floor: 0.70  # [floor, decisive) → T1 scaled + conflict; below → refuted
+  # Evidence widening — shape-based initiation for monetary/rate/datetime.
+  # Flipped ON for all sources in U1b (paired with the RESOLVER_VERSION bump to
+  # "6" so cached `proposed` records re-resolve; confirmed/rejected stay sticky).
+  # Per-source overrides in `sources:` can still force a specific source OFF for
+  # debugging. The dry-run resolve endpoint always forces this on for previews.
+  evidence_widening:
+    default: true
+    sources: {}              # e.g. { banking: false } to force a source OFF
+
+# BIRD-specialized mapping agent (agents/bird_mapping_agent.py).
+# Falls back to the generic `agent` block above for any unset key.
+agent_bird:
+  provider: azure
+  model: gpt-5.4-mini
+  api_key_env: AZURE_FOUNDRY_KEY
+  temperature: 0
+  max_target_tables: 8
+  min_request_interval: 5
+  # Restrict candidate target tables to a specific BIRD layer ("IL" or null for any).
+  layer: IL

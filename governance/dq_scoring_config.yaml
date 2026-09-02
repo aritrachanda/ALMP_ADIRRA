@@ -1,0 +1,165 @@
+# governance/dq_scoring_config.yaml            (hashed into every score's fingerprint)
+# Config scaffold for the DQ Scoring Model (docs/architecture/DQ-Scoring-Model-Design-v1.md §8).
+# U0: config only — no scorer reads this yet. Loaded/validated by core/dq_config.py.
+model_version: "dq-1"
+
+component_weights:            # base maxima; a configurable SET that must sum to 100
+  profile: 50
+  interpretation: 30          # SD-R3c: renamed from 'definition' — one vocabulary. Now
+  # folds the Semantic Type line-item in (Definition 11 + Business Name 5 + Glossary 7 +
+  # Semantic Type 7 = 30); the retired 4th 'semantic' component's points live here.
+  reference_data: 20
+component_applicability:      # predicate name resolved in code
+  profile: always
+  interpretation: always
+  reference_data: is_coded
+
+archetype_detection:
+  key_uniqueness_min: 0.995
+  key_min_rows: 100
+  coded_max_distinct: 50
+  pattern_confidence_min: 0.80      # below → string column archetyped free_text
+
+semantic_type_archetype_map:  # F1 (integration contract §2) — a steward-CONFIRMED
+  # semantic type maps to a DQ archetype, overriding profiler heuristics (precedence
+  # 0b). proposed/suggested types never drive archetypes. The validator-backed text
+  # types make their validator the Validity yardstick (see tolerances/validator use).
+  identifier: key_like        # legacy pre-split generic identifier (kept for old confirmed records)
+  natural_identifier: key_like  # legacy alias of natural_key
+  surrogate_identifier: key_like  # legacy alias of surrogate_systemid
+  natural_key: key_like
+  surrogate_systemid: key_like
+  surrogate_uuid: key_like
+  surrogate_hash: key_like
+  iban: text                  # legacy alias of natural_iban
+  bic: text                   # legacy alias of natural_bic
+  lei: text                   # legacy alias of natural_lei
+  isin: text                  # legacy alias of natural_isin
+  natural_iban: text
+  natural_bic: text
+  natural_lei: text
+  natural_isin: text
+  email: text
+  phone_number: text
+  henkilotunnus: text         # legacy alias of natural_henkilotunnus
+  y_tunnus: text              # legacy alias of natural_yritystunnus
+  natural_htun: text          # pre-2026-08-20-rename legacy id
+  natural_ytun: text          # pre-2026-08-20-rename legacy id
+  natural_henkilotunnus: text
+  natural_yritystunnus: text
+  currency_code: coded
+  country_code: coded
+  reference_code: coded
+  monetary_amount: numeric
+  rate: numeric
+  quantity: numeric
+  date: date
+  datetime: date
+  name: free_text
+  address: free_text
+  free_text: free_text
+  technical: free_text      # interim — real answer is the assessment_scope descope path (D1)
+
+column_intent_defaults:       # v1.1 — per-column declarations live in governance state; these are fallbacks
+  nullability: unspecified    # mandatory | optional | unspecified
+  date_role: unspecified      # past_only | future_allowed | unspecified
+  criticality: standard       # standard | critical
+  placeholder_exceptions: []  # values NOT counted as placeholders for this column
+
+profile_dimensions:           # per-archetype maxima; each row must sum to component_weights.profile
+  key_like:  {completeness: 12, validity: 10, uniqueness: 16, consistency: 4,  findings: 8}
+  coded:     {completeness: 16, validity: 14,                consistency: 12, findings: 8}
+  numeric:   {completeness: 14, validity: 10,                consistency: 18, findings: 8}
+  date:      {completeness: 14, validity: 20,                consistency: 8,  findings: 8}
+  text:      {completeness: 18, validity: 12,                consistency: 12, findings: 8}
+  free_text: {completeness: 22,                              consistency: 16, findings: 12}
+
+tolerances:                   # rate-based: score reaches 0 at zero_at
+  completeness_zero_at: {mandatory: 0.10, unspecified: 0.25, optional: 0.25}
+  placeholder_weight: 0.5     # placeholders count as half-missing by default
+  validity_zero_at: 0.10
+  outlier_zero_at: 0.05
+  dominance_threshold: 0.98
+
+validator_backed_semantic_types:  # DQ §4.1/§10.2 + F2 — when one of these types is
+  # steward-CONFIRMED and the profiler captured validator_pass_rates, the pass rate
+  # becomes the Validity yardstick, outranking the inferred-pattern regex.
+  [iban, bic, lei, isin, email, phone_number, henkilotunnus, y_tunnus,
+   natural_iban, natural_bic, natural_lei, natural_isin,
+   natural_htun, natural_ytun, natural_henkilotunnus, natural_yritystunnus,
+   surrogate_uuid]
+
+consistency_deductions:
+  single_constant: 8
+  constant_run: 6
+  dominance: 4
+
+finding_routing:              # v1.1 — computed routing; nothing silently dropped
+  dimension_category_map: {completeness: completeness, validity: validity,
+                           uniqueness: uniqueness, consistency: consistency}
+  # mapped-but-dimension-absent, unmapped categories, and all AI findings → overlay
+  severity_points: {high: 4, attention: 2, info: 0.5}
+  provenance_multiplier: {rule: 1.0, ai: 0.5}
+
+persistence:                  # v1.1 — see DQ design doc §16.2–16.4
+  trigger: on_write           # profiling completion + governance mutations + explicit re-score; never on read
+  append_policy: score_or_signal_changed
+  history_retention: {max_records_per_key: 50, always_keep_first: true}
+
+definition_scales:            # Interpretation line-item scales (SD-R3c rescale): the
+  # best-case of each part is the line-item max — Definition 11, Business Name 5,
+  # Glossary 7 — which with Semantic Type 7 (below) sum natively to interpretation 30.
+  # No scale factor is ever applied to these literals; they ARE the composite scale.
+  # lifecycle keys: the shared canonical vocabulary (core/lifecycle_vocab.py) PLUS the
+  # legacy element states (initiated/saved/defined) kept as safe aliases through the
+  # transition. Max stays 5 (approved), so the Definition line-item max (present 3 +
+  # authorship 3 + lifecycle 5 = 11) is unchanged. Value-preserving remap (05-impact-
+  # analysis.md): the has-content editable state is `draft` (formerly `saved`) = 2, the
+  # unstarted shell is `empty` (formerly `initiated`) = 0. Bounce-backs (withdrawn/
+  # returned/rejected/revoked) rest at 2 (== draft).
+  description: {present: 3, authorship_human: 3, authorship_ai: 1,
+                lifecycle: {empty: 0, draft: 2, in_review: 3, approved: 5,
+                            withdrawn: 2, returned: 2, rejected: 2, revoked: 2,
+                            initiated: 0, saved: 2, defined: 2}}      # best 3 + 3 + 5 = 11
+  business_name: {human: 5, ai_or_auto: 2, none: 0}                    # max 5
+  glossary: {linked: 3, term_status: {published: 4, approved: 3, confirmed: 2, draft: 1}}  # best 3 + 4 = 7
+
+reference_data_scales:
+  codes_documented_max: 12    # × documented/total
+  status: {approved: 8, under_review: 5, candidate: 2, none: 0}
+
+dataset_scoring:              # dataset-level roll-up (§15) — same rules, one level up
+  component_weights: {column_rollup: 85, dataset_integrity: 15}
+  column_weighting: equal     # equal | criticality (uses criticality_multipliers)
+  criticality_multipliers: {standard: 1.0, critical: 2.0}
+  integrity_profiles:         # like archetypes: each row sums to dataset_integrity max
+    pk_and_fk: {pk_uniqueness: 8, referential_integrity: 7}
+    pk_only:   {pk_uniqueness: 15}
+    fk_only:   {referential_integrity: 15}
+    # none → dataset_integrity not applicable → reallocate (§6 rule, unchanged)
+  integrity_tolerances:
+    pk_duplicates_zero_at: 0.02
+    orphan_fk_zero_at: 0.05
+
+grade_bands:                  # descending; first min satisfied wins; labels/colours free to edit
+  - {min: 90, label: Excellent, color_intent: positive-strong}
+  - {min: 75, label: Good,      color_intent: positive}
+  - {min: 60, label: Adequate,  color_intent: warning}
+  - {min: 40, label: Weak,      color_intent: warning-strong}
+  - {min: 0,  label: Critical,  color_intent: negative}
+
+semantic_line_item:           # SD-R3c — Semantic Type as a line-item INSIDE Interpretation.
+  # Folded in from the retired 4th 'semantic' component (U6a/U6b). The scoring logic is
+  # unchanged — a stepped scale × the max, minus a type/value-conflict deduction,
+  # floored at 0 — only WHERE its points live changed. `max` sums with Definition 11 +
+  # Business Name 5 + Glossary 7 to interpretation weight 30. The semantic DEDUCTION
+  # (resolver, RESOLVER_VERSION 8) is untouched; this only reads accepted_at/confidence
+  # (2026-08-20: no more persisted disposition word — see tech-debt #13/#36/#45).
+  max: 7
+  scale:                      # earned fraction of the 7-point max — stepped like Definition
+    accepted: 1.0             # steward-accepted → full
+    proposed: 0.5             # candidate ≥ floor_threshold, not yet accepted → half
+    suggested: 0.2            # candidate below floor_threshold (weak guess) → low
+    unresolved: 0.0           # no governed meaning
+  type_value_conflict_deduction: 0.3   # fraction of the 7-point max deducted on a
+    # type/value conflict — subtracted after the stepped earn, floored at 0

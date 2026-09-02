@@ -1,0 +1,76 @@
+// Global application styles
+@use './tokens.scss';
+
+body {
+  margin: 0;
+  font-family: 'IBM Plex Sans', sans-serif;
+  background: var(--adirra-paper);
+  color: var(--adirra-ink);
+  background-image: radial-gradient(var(--adirra-line) 0.5px, transparent 0.5px);
+  background-size: 22px 22px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sidebar-gradient.q-drawer,
+.sidebar-gradient.q-drawer .q-drawer__content,
+.sidebar-gradient .q-drawer,
+.sidebar-gradient .q-drawer__content,
+aside.sidebar-gradient {
+  background: linear-gradient(180deg, #0a3d6b 0%, #0d2e4d 100%) !important;
+  background-color: transparent !important;
+}
+
+.main-layout-gradient {
+  background: linear-gradient(180deg, #0a4a5c 0%, #0d2e4d 100%);
+}
+
+.top-bar-gradient {
+  background: linear-gradient(90deg, #0a4a5c 0%, #0d2e4d 100%);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.22);
+}
+
+.q-page-container {
+  background: var(--adirra-paper);
+  background-image: radial-gradient(var(--adirra-line) 0.5px, transparent 0.5px);
+  background-size: 22px 22px;
+}
+
+/* Quasar teleports menus/dropdowns to <body> — pin tokens */
+.q-menu {
+  background: var(--adirra-card);
+  color: var(--adirra-ink);
+}
+
+.q-menu .q-item__label,
+.q-menu .q-item__section {
+  color: var(--adirra-ink);
+}
+
+/* Bound the page container to the viewport so child pages can use
+   independent scrolling. box-sizing:border-box means Quasar's padding-top
+   (= header height) is included inside the 100vh — the inner area is
+   exactly (100vh - header_height) without any extra calc. */
+.q-page-container {
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;   /* content-flow pages (Discovery, Catalog, etc.) scroll here */
+}
+
+.content-panel {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px;
+}
+
+

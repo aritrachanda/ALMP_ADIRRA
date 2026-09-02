@@ -1,0 +1,38 @@
+# connections.yaml
+# Database connection configurations.
+#
+# Sensitive credentials must be provided via environment variables —
+# never hard-code passwords here.
+
+connections:
+  - name: banking
+    type: duckdb
+    database: ./sources/duckdb/test_bank.duckdb  # source: fake banking data (sources/loader/create_test_db.py)
+    schemas: [src]                                # only extract these schemas (omit for all)
+
+  - name: alm_bank
+    type: duckdb
+    database: ./sources/duckdb/almb_faker_kaggle.duckdb
+    read_only: true
+    schemas: [raw_almp]
+
+  - name: faker
+    type: duckdb
+    database: ./sources/duckdb/almb_faker_kaggle.duckdb
+    read_only: true
+    schemas: [raw_faker]
+
+  - name: kaggle
+    type: duckdb
+    database: ./sources/duckdb/almb_faker_kaggle.duckdb
+    read_only: true
+    schemas: [raw_kaggle]
+
+  - name: bird
+    type: yaml
+    file: ./mappings/target_catalogs/bird.yaml         # built by sources/loader/bird_to_duckdb.py + bird_to_yaml.py
+
+  - name: crdm
+    type: yaml
+    file: ./mappings/target_catalogs/crdm.yaml         # pre-built catalog from crdm_to_yaml.py
+    

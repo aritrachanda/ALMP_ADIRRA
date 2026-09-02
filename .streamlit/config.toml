@@ -1,0 +1,15 @@
+[theme]
+# DPMM Component library tokens (from Figma file Ye4GLNSJ6ELPMXz03zR6zI).
+# Pin to light base so the canvas matches Figma regardless of OS/browser theme.
+base = "light"
+primaryColor = "#0d4da1"             # Primary/Main
+backgroundColor = "#fdfdfd"          # White/Background
+secondaryBackgroundColor = "#f7f7f7" # White/Light grey
+textColor = "#2b2a31"                # Black/Text
+font = "sans serif"
+
+[server]
+headless = true
+
+[browser]
+gatherUsageStats = false

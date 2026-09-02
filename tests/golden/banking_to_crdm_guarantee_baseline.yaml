@@ -1,0 +1,235 @@
+version: 2
+source: banking
+target: crdm
+provider: azure
+model: gpt-5.4-mini
+generated_at: '2026-05-21T15:51:54'
+status: draft
+tables:
+- target_schema: CRDM.input
+  target_table: Guarantee
+  table_confidence: 0.91
+  table_rationale: The source dataset contains a dedicated guarantees table with core
+    guarantee identifiers, amounts, currencies, dates, and type fields that align
+    closely with the target Guarantee entity.
+  sql_query: SELECT g.guarantee_id AS crm_number, g.guarantee_type AS crm_type, g.currency
+    AS currency_code_iso, g.start_date AS inception_date, g.expiry_date AS maturity_date,
+    g.expiry_date AS maturity_date_original, g.amount AS guarantee_percent, g.guarantee_id
+    AS ext_crm_id, g.guarantee_type AS ext_collateral_type, g.is_financial_collateral
+    AS deficiency_guarantee, g.is_financial_collateral AS sa_included, g.amount AS
+    collateral_amount_cap, g.amount AS sa_rw, g.start_date AS valuation_date, g.start_date
+    AS datadate, g.loan_id AS bank_business_id, c.country AS country_code_iso, 'src.guarantees'
+    AS source_system, ROW_NUMBER() OVER (ORDER BY g.guarantee_id) AS id, CASE WHEN
+    g.guarantee_type IN ('GENERAL','GEN') THEN 1 ELSE 0 END AS general_guarantee,
+    CASE WHEN g.guarantee_type IN ('SPECIAL','SPEC') THEN 1 ELSE 0 END AS capped_guarantee
+    FROM src.guarantees g LEFT JOIN src.loans l ON g.loan_id = l.loan_id LEFT JOIN
+    src.counterparties c ON g.guarantor_id = c.counterparty_id;
+  columns:
+  - target_column: bank_business_id
+    source_schema: src
+    source_table: guarantees
+    source_column: loan_id
+    confidence: 0.58
+    rationale: The guarantee record links to a loan identifier, which is the closest
+      available business identifier in the source data.
+    transformation_type: direct
+    notes: null
+    status: pending
+  - target_column: capped_guarantee
+    source_schema: src
+    source_table: guarantees
+    source_column: guarantee_type
+    confidence: 0.72
+    rationale: Guarantee type can be interpreted to distinguish general versus special
+      guarantees.
+    transformation_type: derived
+    notes: Derive bit flag from guarantee_type values indicating special/capped guarantees.
+    status: pending
+  - target_column: collateral_amount_cap
+    source_schema: src
+    source_table: guarantees
+    source_column: amount
+    confidence: 0.41
+    rationale: The guarantee amount is the closest available numeric value, though
+      it does not explicitly represent a cap.
+    transformation_type: derived
+    notes: Use amount as a proxy only if business rules define it as the cap; otherwise
+      leave null.
+    status: pending
+  - target_column: country_code_iso
+    source_schema: src
+    source_table: counterparties
+    source_column: country
+    confidence: 0.63
+    rationale: The guarantor counterparty country is the closest available country
+      attribute for the guarantee.
+    transformation_type: direct
+    notes: null
+    status: pending
+  - target_column: crm_number
+    source_schema: src
+    source_table: guarantees
+    source_column: guarantee_id
+    confidence: 0.99
+    rationale: The guarantee identifier directly matches the collateral number concept.
+    transformation_type: direct
+    notes: null
+    status: pending
+  - target_column: crm_type
+    source_schema: src
+    source_table: guarantees
+    source_column: guarantee_type
+    confidence: 0.97
+    rationale: The source guarantee type is the best direct match for the CRDM guarantee
+      type.
+    transformation_type: direct
+    notes: null
+    status: pending
+  - target_column: currency_code_iso
+    source_schema: src
+    source_table: guarantees
+    source_column: currency
+    confidence: 0.99
+    rationale: The guarantee currency maps directly to the ISO currency code field.
+    transformation_type: direct
+    notes: null
+    status: pending
+  - target_column: datadate
+    source_schema: src
+    source_table: guarantees
+    source_column: start_date
+    confidence: 0.52
+    rationale: The guarantee start date is the closest available date to use as the
+      reporting date when no explicit snapshot date exists.
+    transformation_type: derived
+    notes: Prefer a reporting snapshot date if available; otherwise use start_date
+      as a fallback.
+    status: pending
+  - target_column: deficiency_guarantee
+    source_schema: src
+    source_table: guarantees
+    source_column: is_financial_collateral
+    confidence: 0.34
+    rationale: The financial collateral flag is the only boolean guarantee attribute
+      available, but it is not a true deficiency indicator.
+    transformation_type: derived
+    notes: Business interpretation required; this is only a weak proxy.
+    status: pending
+  - target_column: ext_collateral_type
+    source_schema: src
+    source_table: guarantees
+    source_column: guarantee_type
+    confidence: 0.86
+    rationale: The source guarantee type is the closest external collateral type descriptor.
+    transformation_type: direct
+    notes: null
+    status: pending
+  - target_column: ext_crm_id
+    source_schema: src
+    source_table: guarantees
+    source_column: guarantee_id
+    confidence: 0.98
+    rationale: The source guarantee identifier serves as the surrogate source system
+      ID.
+    transformation_type: direct
+    notes: null
+    status: pending
+  - target_column: general_guarantee
+    source_schema: src
+    source_table: guarantees
+    source_column: guarantee_type
+    confidence: 0.72
+    rationale: Guarantee type can be translated into a general guarantee indicator.
+    transformation_type: derived
+    notes: Derive bit flag from guarantee_type values indicating general guarantees.
+    status: pending
+  - target_column: guarantee_percent
+    source_schema: src
+    source_table: guarantees
+    source_column: amount
+    confidence: 0.28
+    rationale: No explicit guarantee percentage exists, so the guarantee amount is
+      only a weak numeric proxy.
+    transformation_type: derived
+    notes: No true percentage source exists; mapping is speculative and may need null.
+    status: pending
+  - target_column: id
+    source_schema: null
+    source_table: null
+    source_column: null
+    confidence: 0.0
+    rationale: No source column provides the required rolling debug identifier.
+    transformation_type: unmapped
+    notes: null
+    status: pending
+  - target_column: inception_date
+    source_schema: src
+    source_table: guarantees
+    source_column: start_date
+    confidence: 0.98
+    rationale: The guarantee start date directly matches the inception date.
+    transformation_type: direct
+    notes: null
+    status: pending
+  - target_column: maturity_date
+    source_schema: src
+    source_table: guarantees
+    source_column: expiry_date
+    confidence: 0.98
+    rationale: The guarantee expiry date directly matches the maturity date.
+    transformation_type: direct
+    notes: null
+    status: pending
+  - target_column: maturity_date_original
+    source_schema: src
+    source_table: guarantees
+    source_column: expiry_date
+    confidence: 0.86
+    rationale: The expiry date is the only available maturity-related date and can
+      serve as the original maturity date.
+    transformation_type: direct
+    notes: null
+    status: pending
+  - target_column: sa_included
+    source_schema: src
+    source_table: guarantees
+    source_column: is_financial_collateral
+    confidence: 0.39
+    rationale: The financial collateral flag is the closest available boolean for
+      inclusion in a regulatory model.
+    transformation_type: derived
+    notes: Business rule mapping required; this is a proxy only.
+    status: pending
+  - target_column: sa_rw
+    source_schema: src
+    source_table: guarantees
+    source_column: amount
+    confidence: 0.22
+    rationale: No risk-weight field exists, so the guarantee amount is only a weak
+      numeric placeholder.
+    transformation_type: derived
+    notes: No suitable source exists; should likely remain null unless a rule-based
+      default is defined.
+    status: pending
+  - target_column: source_system
+    source_schema: null
+    source_table: null
+    source_column: null
+    confidence: 0.0
+    rationale: The source system name is not stored as a dedicated column in the provided
+      data.
+    transformation_type: unmapped
+    notes: null
+    status: pending
+  - target_column: valuation_date
+    source_schema: src
+    source_table: collateral
+    source_column: valuation_date
+    confidence: 0.74
+    rationale: Collateral valuation date is the closest available valuation date in
+      the source data.
+    transformation_type: direct
+    notes: Would require a business join from guarantees to collateral if a relationship
+      is available.
+    status: pending
+  status: pending
